@@ -1,5 +1,5 @@
 
-#Diseases: Tidy Tuesday Week 50
+# Diseases: Tidy Tuesday Week 50
 
 
 ```r
@@ -169,7 +169,8 @@ anim_save("measlesmap.gif", anim)
 
 
 ## The Map
-![alt text](~/Week50-Disease/measlesmap.gif)
+![Measles Map](measlesmap.gif)
+
 
 
 
