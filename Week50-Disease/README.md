@@ -1,10 +1,8 @@
----
-title: "Diseases: Tidy Tuesday Week 50"
-author: "Samia"
-date: "12/10/2019"
----
 
-```
+#Diseases: Tidy Tuesday Week 50
+
+
+```r
 #packages
 library(tidyverse)
 library(gganimate)
@@ -16,14 +14,14 @@ library(scales)
 ```
 
 
-# Read in the diseases CSV file 
+## Read in the diseases CSV file 
 
 ```r
 diseases<-read.csv(file="~/GitHub/TidyTuesday/data/2019/2019-12-10/diseases.csv")
 ```
 
 
-# View the dataset
+## View the dataset
 
 ```r
 diseases %>%nrow() #18870
@@ -54,9 +52,9 @@ diseases %>% colnames() #disease, count, state, population, year, weeks_reportin
 head(diseases)
 ```
 
-# Explore dataset and mutate
-## See the unique diseases in the dataset
-## Calculate incidence from count and population columns
+## Explore dataset and mutate
+### See the unique diseases in the dataset
+### Calculate incidence from count and population columns
 
 
 ```r
@@ -75,7 +73,7 @@ diseases<- diseases %>% mutate(incidence=(count/population)*100000)
 ```
 
 
-# Filter measles from the dataset 
+## Filter measles from the dataset 
 
 ```r
 #filter by measles/summary
@@ -107,8 +105,8 @@ measles<-diseases %>% filter(disease=="Measles")
 measles<-measles %>% mutate (incidence_rounded = round(incidence, digits=1))
 ```
 
-# Create a FIPS column using `fips()` from `usmap` package
-# Create a new column to classify year by vaccine availability-will be used for subtitle in ggplot
+## Create a FIPS column using `fips()` from `usmap` package
+## Create a new column to classify year by vaccine availability-will be used for subtitle in ggplot
 
 ```r
 #Create a FIPS column using the fips() function from usmap 
@@ -123,7 +121,7 @@ measles$vaccine<-recode(measles$vaccine, '1'="",
                                      '3'="Second dose recommended")
 ```
 
-# Create the plot
+## Create the plot
 
 ```r
 #Quantile breaks for gradient scale
@@ -161,7 +159,7 @@ guides(fill = guide_colorbar(title="",
    transition_time(year)
 ```
 
-# Save
+## Save
 
 ```r
 anim<-animate(measles_plot, nframes=76, fps=1)
@@ -169,25 +167,9 @@ anim<-animate(measles_plot, nframes=76, fps=1)
 anim_save("measlesmap.gif", anim)
 ```
 
-```
-## Warning in file.create(to[okay]): cannot create file 'measlesmap.gif', reason
-## 'Permission denied'
-```
 
-```r
-#save the map 
-```
+## The Map
+![alt text](~/Week50-Disease/measlesmap.gif)
 
 
-# The Map
-![alt text](~/GitHub/SamiasTidyTuesdayProjects/Week50-Disease/measlesmap.gif)
-
-
-```r
-#Render this as the README file for Github
-knitr::knit(
-  input="Weak50-Disease.Rmd",
-  output="README.md"
-)
-```
 
