@@ -2,9 +2,10 @@
 title: "Diseases: Tidy Tuesday Week 50"
 author: "Samia"
 date: "12/10/2019"
+
 ---
 
-```
+```r
 #packages
 library(tidyverse)
 library(gganimate)
@@ -169,25 +170,9 @@ anim<-animate(measles_plot, nframes=76, fps=1)
 anim_save("measlesmap.gif", anim)
 ```
 
-```
-## Warning in file.create(to[okay]): cannot create file 'measlesmap.gif', reason
-## 'Permission denied'
-```
-
-```r
-#save the map 
-```
-
 
 # The Map
 ![alt text](~/GitHub/SamiasTidyTuesdayProjects/Week50-Disease/measlesmap.gif)
 
 
-```r
-#Render this as the README file for Github
-knitr::knit(
-  input="Weak50-Disease.Rmd",
-  output="README.md"
-)
-```
 
