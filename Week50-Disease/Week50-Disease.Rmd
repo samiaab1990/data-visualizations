@@ -109,7 +109,7 @@ measles<-measles %>% mutate (incidence_rounded = round(incidence, digits=1))
 
 Since the dataset has data for each state by year, I decided it would be ideal to use a chloropleth map with `gganimate` to show how the incidence rate varies by each state over the years. The `usmaps` package provides one of many options to display state level data on a US map, which can also be done using the `spData` package, however with additional steps to [include Alaska and Hawaii](https://nowosad.github.io/post/making-alternative-inset-maps-of-the-usa/). 
 
-# Create a FIPS column using `fips()` from `usmap` package
+# Create a FIPS column using `fips()` from `usmaps` package
 The `usmaps` package has a `fips()` function that outputs the FIPs code for a state name string input. To have the state level data plotted onto the map, a FIPs column corresponding to each state needs to be created. 
 
 ```{r}
