@@ -2,9 +2,6 @@
 # Diseases: Tidy Tuesday Week 50
 
 
-
-
-
 ## Introduction
 For Week 50 of the R4datascience project, I used the provided diseases data mentioned in this [SimplyStats](https://simplystatistics.org/2019/08/28/you-can-replicate-almost-any-plot-with-ggplot2/) blog post. The dataset contains state level data of vaccine preventable infectious diseases over the span of ~70 years. 
 
