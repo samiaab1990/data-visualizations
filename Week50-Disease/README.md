@@ -134,7 +134,7 @@ diseases %>% select("count") %>% by(diseases$disease,sum)
 
 I summarized the cases of each disease by counts to get an idea of which one had the most cases in all of US over the span of the 76 years in the dataset. As anticipated, measles had the greatest number, with 18,670,996 cases in the United States from 1928 to 2003. 
 
-# Calculate an incidence
+
 # Calculate incidence rate
 To compare the number of cases between states, I mutated the dataset to add an incidence rate that takes into account the case count over state population by 100,000 people for each state per year. 
 
