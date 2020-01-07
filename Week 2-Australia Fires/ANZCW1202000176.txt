@@ -1,0 +1,111 @@
+ANZLIC Identifier
+ANZCW1202000176
+
+Title
+Nutrient Status of Australian Agricultural Soils (1989-1999) 
+
+Custodian
+National Land and Water Resources Audit
+
+Jurisdiction
+Australia
+
+Description
+Abstract
+The data are soil nutrient test results with accompanying descriptors contained within a Microsoft Access data base that can be queried to generate maps of soil fertility properties at national, state and regional scales.
+
+Shapefile available of areas according to national landuse grid (v1a) have no agricultural activity within them (eg. National Parks, mining leases etc.) - non-ag_mask.shp
+
+Point shapefiles for number of samples for soil tests: Colwell Phosphorus; pH CaCl2; Exchangeable calcium: Exch. magnesium: Extractable potassium: Extr. sulfur: Nitrate nitrogen: Organic carbon
+
+Shapefiles for polygon & points for soil tests: Colwell Phosphorus; pH CaCl2; Exchangeable calcium: Exch. magnesium: Extractable potassium: Extr. sulfur: Nitrate nitrogen: Organic carbon
+
+Search Words:		
+SOIL Maps
+SOIL Chemistry Maps
+AGRICULTURE
+
+Geographic Bounding Box
+112, -9, 154, -44
+
+Data Currency
+Beginning date
+1989
+
+Ending date
+1999
+
+Data Status
+Progress
+Complete
+
+Maintenance & Update frequency
+Not planned
+
+Stored Data Format
+DIGITAL - Microsoft Access 97 database
+
+Available format(s)
+DIGITAL - Microsoft Access 97 database
+
+Access Constraints
+The data are subject to Commonwealth of Australia Copyright. A licence agreement is required.
+
+Data Quality
+Lineage
+Individual sample records exist for eastern Australia. For southwest Western Australia, sample data was received in the spatially aggregated form of summary statistics (mean, count, standard deviation, etc.) for each of approximately 640 20km grid cells placed across the intensive land use zone. A summary of the GIS method for producing the Soil Nutrient National Maps is provided in the additional metadata documentation "Nutrient Status in Australia Agricultural Soils_Additional metadata.doc"):
+
+Attributes included (descriptions are provided in "Nutrient Status in Australia Agricultural Soils_Additional metadata.doc"):
+Sample ID; Nearest Town; Nearest State; Location; State; Best Long; Best Lat; Sample Year; From Depth; To Depth; Landuse Code; Other Landuse; Interpd Soil Texture; Clay Content; Free Lime-cor; EC; pHwater; pHCaCl2; Organic C; Nitrate N; Colwell P; Olsen P; Colwell K; Skene K; Sulphur-CaH2PO4; Sulphur-KCl; Sulphur-water; ExchK; ExchNa; ExchCa; ExchMg; ExchAcidity; Ecse; Derived_pHCaCl2; K status; CombCaH2PO4&KCl_S; ESP; Total Cations; pHBC; 
+
+Positional Accuracy
+Samples geo-referenced by town locations from IRDB 1996, Gazetteer of Australia (Committee for Geographic Names in Australia) and 1:50,000 to 1:250,000 scale topographic maps, cadastral centroids (SA only) and AMG grid sites. Accuracy +1Km at worst,  + 100m at best. However, some samples may be referenced to towns up to 100's of km from the true sample site.
+			
+Attribute Accuracy
+Data largely sourced from industry databases of unknown or undocumented attribute accuracy. Most soil tests undertaken to Australian soil testing  standards as set out in Rayment, G.E, Higginson, F.R.  1992:  Australian Soil and Land survey - Australian laboratory handbook of soil and water chemical analysis. Inkata Press.  Compliance to these standards unknown.
+			
+Logical Consistency
+Comparable soil analysis techniques were used to determine each soil fertility attribute, that is, they are internally consistent.  The results of each different soil test are not necessarily related or comparable.  Each soil test was associated with the township centroid by similar means. 
+
+Completeness
+Attribute values not complete for all sample records.
+
+Contact Information
+Contact Organisation
+National Land and Water Resources Audit 	
+
+Contact Position
+Technical Director
+
+Mail Address
+GPO Box 2182, Canberra, ACT
+
+Postcode
+2601
+
+Telephone
+02 6257 9516
+
+Fax
+02 6257 9516
+
+E-mail
+atlas@nlwra.gov.au
+
+Metadata Date
+17 April 2002
+
+ADDITIONAL METADATA
+Maps Prepared (names in brackets [] refer to the ArcView Legend Files files):
+Map data (shapefiles) were prepared from thiessen polygons, points (isolated township locations) and non-agricultural mask as published in the Audit's Theme report - Australian Agriculture Assessment 2001 (NLWRA 2001). 
+1. Colwell Phosphorus:  [nat_colp(pts); nat_colp]
+2. pH CaCl2 derived from pH CaCl2 plus conversions of pH water data:  [nat_der_phcacl2(pts); nat_der_phcacl2]
+3. Exchangeable calcium: [nat_exchca(pts); nat_exchca]
+4. Exchangeable magnesium: [ nat_exchmg(pts); nat_exchmg]
+5. Extractable potassium: [nat_extrk(pts); nat_extrk]
+6. Extractable sulfur: [nat_extrs(pts); nat_extrs]
+7. Nitrate nitrogen: [nat_nitn(0-60cm)(pts); nat_nitn(0-60cm)]
+8. Organic carbon: [nat_orgc(pts); nat_orgc]
+* Additional information about the databases and mapping data is available in SoilFertilityStatus in Australian Agricultural Soils_Additional metadata.doc
+
+

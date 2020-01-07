@@ -1,0 +1,116 @@
+---
+title: 'Week 2: Australian Climate Data'
+author: "Samia B"
+date: "1/7/2020"
+output: html_document
+---
+
+Packages
+```{r}
+#packages
+library(sf)
+library(rgdal)
+library(ggplot2)
+library(tidyverse)
+library(SDMTools)
+library(raster)
+library(broom)
+library(maptools)
+library(ggdark)
+library(showtext)
+library(ggrepel)
+library(lubridate)
+library(stringr)
+```
+
+```{r}
+rainfall <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/rainfall.csv')
+temperature <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/temperature.csv')
+```
+
+```{r}
+#1-day average
+australia<-readOGR("aust_cd66states.shp") 
+aus_climate<-raster('latest (1).grid') 
+
+australia_fortified<-australia %>% fortify(australia, region='STE')
+
+climate_spdf <- as(aus_climate, "SpatialPixelsDataFrame")
+climate_df <- as.data.frame(climate_spdf)
+
+australia_cities<- rainfall %>% distinct(city_name, long, lat)
+australia_cities<-australia_cities[-4,]
+
+australia_climate_interior<-climate_spdf[!is.na(over(climate_spdf, as(australia, "SpatialPolygons"))), ]
+australia_climate_interior<-as.data.frame(australia_climate_interior) %>% rename(value=latest_.1.)
+australia_climate_interior<-australia_climate_interior %>% mutate(value.f=((value*9/5)+32))
+
+
+
+```
+
+```{r}
+
+png("plot.png", units="in", width=10, height=9, res=300)
+showtext.auto()
+ggplot()+
+  geom_tile(data = australia_climate_interior, 
+            aes(x = x, 
+                y = y, 
+                fill = value.f))+
+  geom_polygon(data = australia_fortified, 
+               aes(x = long, 
+                   y = lat, 
+                   group = group), 
+               fill = NA, 
+               color = "#3E3E3E", 
+               size = 0.3) +
+  geom_point(data=australia_cities,aes(long,lat), color="#D8D0D0")+
+  geom_text_repel(data=australia_cities,aes(long,lat,label=city_name), size=12, color="#D8D0D0")+
+  scale_fill_viridis_c(option = "plasma") +
+  coord_equal() +
+  dark_theme_gray()+
+  labs(title="Australia Climate Map",
+       subtitle="Daily Mean Maximum Temperature 01-08-2020",
+       caption="Source: Australian Government Bureau of Meteorology")+
+  theme(plot.title = element_text(family="Roboto", size=100,color="#D7D7D7", face="bold"),
+        plot.subtitle=element_text(family="Roboto", size=50, color="#D7D7D7"),
+        plot.background = element_rect(fill = "grey10"),
+        legend.text=element_text(color="#B3B3B3", size=40),
+        legend.title=element_text(color="#B3B3B3", size=40, vjust=.8),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.background = element_blank(),
+        axis.ticks = element_blank(),
+        legend.key = element_blank(),
+        axis.text=element_blank(),
+        axis.title=element_blank(),
+        legend.position = "bottom",
+        legend.justification="right",
+        plot.caption=element_text(hjust=0,size=36))+
+  guides(fill=guide_colorbar(title="Temperature °F",ticks=FALSE, direction="horizontal", barwidth = 15,  barheight=.8,label.position="bottom", title.position = "top", title.vjust = -5, label.vjust=5))
+dev.off()
+```
+
+```{r}
+temperature %>% head()
+max_temp<-temperature %>% filter(temp_type=="max")
+max_temp %>% summary
+
+unique(max_temp$city_name)
+
+max_temp$date<-ymd(max_temp$date)
+max_temp$year<-year(max_temp$date)
+max_temp$month<-month(max_temp$date)
+
+max_temp %>% str_to_title("city_name")
+
+```
+
+```{r}
+ggplot()+
+  geom_line(data=max_temp, aes(x=year, y=month, group=city_na))
+```
+
+
