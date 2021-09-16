@@ -1,0 +1,357 @@
+---
+title: 'Week 2: Australian Climate Data'
+author: "Samia B"
+date: "1/7/2020"
+output: html_document
+---
+
+Packages
+```{r}
+#packages
+library(sf)
+library(rgdal)
+library(ggplot2)
+library(tidyverse)
+library(SDMTools)
+library(raster)
+library(broom)
+library(maptools)
+library(ggdark)
+library(showtext)
+library(ggrepel)
+library(lubridate)
+library(stringr)
+library(ggthemes)
+library(smoothr)
+library(RColorBrewer)
+library(reshape2)
+library(sp)
+library(broom)
+library(rgeos)
+library(gridExtra)
+library(cowplot)
+library(ggpubr)
+```
+
+```{r}
+rainfall <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/rainfall.csv')
+temperature <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/temperature.csv')
+```
+
+```{r}
+#1-day average
+australia<-readOGR("aust_cd66states.shp") 
+aus_climate<-raster('2019120120191231 (1).grid') 
+rainfall_grid<-raster('rainfall2.grid')
+max_annual_avg<-raster('maxann.txt')
+
+max_ann_spdf<-as(max_annual_avg,"SpatialPixelsDataFrame")
+max_ann_df<-as.data.frame(max_ann_spdf) 
+max_ann_df<-max_ann_df %>% rename(long=x,lat=y)
+
+
+
+australia_cities<-rainfall %>% dplyr::select(city_name,long,lat)
+australia_cities<-unique(australia_cities)
+australia_cities<-australia_cities[-4,]
+
+
+australia_fortified<-australia %>% fortify(australia, region='STE')
+
+climate_spdf <- as(aus_climate, "SpatialPixelsDataFrame")
+climate_df <- as.data.frame(climate_spdf)
+
+rainfall_spdf<-as(rainfall_grid, "SpatialPixelsDataFrame")
+rainfall_df<-as.data.frame(rainfall_spdf)
+
+
+australia_climate_interior<-climate_spdf[!is.na(over(climate_spdf, as(australia, "SpatialPolygons"))), ]
+australia_climate_interior<-as.data.frame(australia_climate_interior) 
+australia_climate_interior<-australia_climate_interior %>% rename(temp=X2019120120191231_.1.)
+australia_climate_interior<-australia_climate_interior %>% mutate(temp.f=((temp*9/5)+32))
+
+rainfall_interior_spdf<-rainfall_spdf[!is.na(over(rainfall_spdf, as(australia,"SpatialPolygons"))),]
+rainfall_interior<-as.data.frame(rainfall_interior_spdf)
+rainfall_interior_raster<-raster(rainfall_interior_spdf)
+
+min(australia_climate_interior$temp.f)
+max(australia_climate_interior$temp.f)
+
+breaks<-seq(50,120, by=10)
+breaks.c<-round(((breaks-32)*5/9),0)
+labels<-paste0(breaks,sep="\n",breaks.c)
+
+```
+
+```{r}
+
+showtext.auto()
+dec_avg<-ggplot()+
+  geom_tile(data = australia_climate_interior, 
+            aes(x = x, 
+                y = y, 
+                fill = temp.f))+
+  geom_polygon(data = australia_fortified, 
+               aes(x = long, 
+                   y = lat, 
+                   group = group), 
+               fill = NA, 
+               color = "#3E3E3E", 
+               size = 0.3) +
+  geom_point(data=australia_cities,aes(long,lat), color="#D8D0D0")+
+  geom_text_repel(data=australia_cities,aes(long,lat,label=city_name), size=5, color="#D8D0D0")+
+  scale_fill_viridis_c(option = "plasma", breaks=breaks, labels=labels) +
+  coord_equal() +
+  dark_theme_gray()+
+  labs(title="Australia Climate Map",
+       subtitle="Daily Mean Maximum Temperatures December 2019",
+       caption="Source: Australian Government Bureau of Meteorology")+
+  theme(plot.title = element_text(family="Roboto", size=10,color="#D7D7D7", face="bold"),
+        plot.subtitle=element_text(family="Roboto", size=5, color="#D7D7D7"),
+        plot.background = element_rect(fill = "grey10"),
+        legend.text=element_text(color="#B3B3B3", size=4, lineheight = .3),
+        legend.title=element_text(color="#B3B3B3", size=4, vjust=.8),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.background = element_blank(),
+        axis.ticks = element_blank(),
+        legend.key = element_blank(),
+        axis.text=element_blank(),
+        axis.title=element_blank(),
+        legend.position = "bottom",
+        legend.justification="right",
+        plot.caption=element_text(hjust=0,size=3))+
+  guides(fill=guide_colorbar(title="Temperature °F/°C",ticks=FALSE, direction="horizontal", barwidth = 5,  barheight=.8,label.position="bottom", title.position = "top", title.vjust = -5, title.hjust=.5, label.vjust=1))
+
+```
+
+
+```{r}
+png("Dec2019avg.png", units="in", width=10, height=9, res=300)
+dec_avg
+dev.off()
+```
+
+
+```{r}
+
+max(rainfall_interior_raster$rainfall)
+nrow()
+```
+
+
+```{r}
+
+
+r1<- cut(rainfall_interior_raster$rainfall, breaks = c(-Inf,.9999)) 
+r_poly1 <- rasterToPolygons(r1, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth1 <- smooth(r_poly1, method = "ksmooth", smoothness=5)
+r_poly_smooth1$level<-1
+
+r2<- cut(rainfall_interior_raster$rainfall, breaks = c(1, 4.9999)) 
+r_poly2<- rasterToPolygons(r2, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth2 <- smooth(r_poly2, method = "ksmooth", smoothness=5)
+r_poly_smooth2$level<-2
+
+r3<- cut(rainfall_interior_raster$rainfall, breaks = c(5, 9.9999)) 
+r_poly3<- rasterToPolygons(r3, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth3 <- smooth(r_poly3, method = "ksmooth", smoothness=5)
+r_poly_smooth3$level<-3
+
+r4<- cut(rainfall_interior_raster$rainfall, breaks = c(10, 24.9999)) 
+r_poly4<- rasterToPolygons(r4, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth4 <- smooth(r_poly4, method = "ksmooth", smoothness=5)
+r_poly_smooth4$level<-4
+
+r5<- cut(rainfall_interior_raster$rainfall, breaks = c(25, 49.9999)) 
+r_poly5<- rasterToPolygons(r5, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth5 <- smooth(r_poly5, method = "ksmooth", smoothness=5)
+r_poly_smooth5$level<-5
+
+r6<- cut(rainfall_interior_raster$rainfall, breaks = c(50, 99.9999)) 
+r_poly6<- rasterToPolygons(r6, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth6 <- smooth(r_poly6, method = "ksmooth", smoothness=5)
+r_poly_smooth6$level<-6
+
+r7<- cut(rainfall_interior_raster$rainfall, breaks = c(100, 199.9999)) 
+r_poly7<- rasterToPolygons(r7, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth7<- smooth(r_poly7, method = "ksmooth", smoothness=7)
+r_poly_smooth7$level<-7
+
+r8<- cut(rainfall_interior_raster$rainfall, breaks = c(200, 299.9999)) 
+r_poly8<- rasterToPolygons(r8, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth8<- smooth(r_poly8, method = "ksmooth", smoothness = 5)
+r_poly_smooth8$level<-8
+
+r9<- cut(rainfall_interior_raster$rainfall, breaks = c(300, 399.9999)) 
+r_poly9<- rasterToPolygons(r9, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth9<- smooth(r_poly9, method = "ksmooth", smoothness=5)
+r_poly_smooth9$level<-9
+
+r10<- cut(rainfall_interior_raster$rainfall, breaks = c(400, Inf)) 
+r_poly10<- rasterToPolygons(r10, function(x){x == 1}, dissolve = TRUE) %>% 
+  st_as_sf()
+r_poly_smooth10<- smooth(r_poly10, method = "ksmooth", smoothness=5)
+r_poly_smooth10$level<-10
+
+r_poly_smooth_all<-rbind(r_poly_smooth1,r_poly_smooth2,r_poly_smooth3,r_poly_smooth4, r_poly_smooth5,r_poly_smooth6,r_poly_smooth7, r_poly_smooth8, r_poly_smooth9, r_poly_smooth10)
+
+
+```
+
+```{r}
+
+rainfall_interior_raster$level<-cut(rainfall_interior_raster$rainfall2, c(-Inf,1,5,10,25,50,100,200,300,400,Inf))
+
+rainfall_interior_raster_poly<-rasterToPolygons(rainfall_interior_raster) %>% st_as_sf()
+
+rainfall_interior_raster_df<-rasterToPolygons(rainfall_interior_raster) 
+
+rainfall_interior_raster_df<-SpatialPolygonsDataFrame(rainfall_interior_raster_df,rainfall_interior_raster_df@data) 
+
+rainfall_interior_raster_df<-tidy(rainfall_interior_raster_df, region="level")
+
+
+
+
+
+```
+
+```{r}
+png("Rainfallavg2.png", units="in", width=10, height=9, res=300)
+showtext.auto()
+rain_avg_plot<-ggplot()+
+  geom_sf(data=rainfall_interior_raster_poly, aes(fill=level), color=NA)+
+  geom_polygon(data=rainfall_interior_raster_df, aes(long,lat,group=group), fill=NA, color="#3E3E3E", size=.3)+
+  geom_polygon(data = australia_fortified, 
+               aes(x = long, 
+                   y = lat, 
+                   group = group), 
+               fill = NA, 
+               color = "#3E3E3E", 
+               size = 0.3) +
+  geom_point(data=australia_cities,aes(long,lat), color="#D8D0D0")+
+  geom_text_repel(data=australia_cities,aes(long,lat,label=city_name), size=12, color="#D8D0D0")+
+  scale_fill_viridis_c(option="viridis", breaks=c(1,2,3,4,5,6,7,8,9,10), label=c("0","1","5","10","25","50","100","200","300","400+"))+
+  coord_sf() +
+  dark_theme_gray()+
+  labs(title="Australia Climate Map",
+       subtitle="Rainfall Totals December 2019",
+       caption="Source: Australian Government Bureau of Meteorology")+
+  theme(plot.title = element_text(family="Roboto", size=100,color="#D7D7D7", face="bold"),
+        plot.subtitle=element_text(family="Roboto", size=50, color="#D7D7D7"),
+        plot.background = element_rect(fill = "grey10"),
+        legend.text=element_text(color="#B3B3B3", size=40, lineheight = .3),
+        legend.title=element_text(color="#B3B3B3", size=40, vjust=.8),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.background = element_blank(),
+        axis.ticks = element_blank(),
+        legend.key = element_blank(),
+        axis.text=element_blank(),
+        axis.title=element_blank(),
+        legend.position = "bottom",
+        legend.justification="right",
+        plot.caption=element_text(hjust=0,size=36))+
+  guides(fill=guide_colorbar(title="Rainfall(mm)",ticks=FALSE, direction="horizontal", barwidth = 20,  barheight=.8,label.position="bottom", title.position = "top", title.vjust = -5, title.hjust=.5, label.vjust=5))
+rain_avg_plot
+dev.off()
+```
+
+
+```{r}
+temperature %>% head()
+max_temp<-temperature %>% filter(temp_type=="max")
+max_temp %>% summary
+
+unique(max_temp$city_name)
+
+max_temp$date<-ymd(max_temp$date)
+max_temp$year<-year(max_temp$date)
+max_temp$month<-month(max_temp$date)
+
+max_temp<-max_temp %>% mutate(city_name=str_to_title(city_name))
+max_temp<-max_temp %>% filter(city_name!="Port")
+max_temp$city_name<-recode(max_temp$city_name,"Kent"="Adelaide")
+
+unique(max_temp$city_name)
+unique(max_temp$month)
+
+max_temp<-max_temp %>% mutate(temp.f=(temperature*9/5)+32)
+
+max_temp_avg<-aggregate(max_temp$temperature, by=list(max_temp$city_name,max_temp$year),FUN=mean, na.rm=TRUE)
+max_temp_avg<-max_temp_avg %>% rename(city=Group.1,year=Group.2,temp=x)
+
+max_temp_avg<-max_temp_avg %>% rename(city=Group.1,month=Group.2,year=Group.3,temp=x)
+max_temp_avg<-max_temp_avg %>% mutate(temp.f=(temp*9/5)+32)
+
+thirty_yr_avg<-max_temp_avg %>% filter(year>=1961 & year<=1990) 
+thirty_yr_avg<-aggregate(thirty_yr_avg$temp, by=list(thirty_yr_avg$city), FUN=mean, na.rm=TRUE)
+thirty_yr_avg<-thirty_yr_avg %>% rename(city=Group.1,avgtemp=x)
+max_temp_avg<-merge(max_temp_avg,thirty_yr_avg)
+max_temp_avg<-max_temp_avg %>% mutate(diff=temp-avgtemp)
+max_temp_avg<-max_temp_avg %>% filter(year!=2020)
+max_temp
+```
+
+```{r}
+png("facet-grid-temp.png", units="in", width=9, height=6, res=500)
+ggplot()+geom_hline(yintercept=0, size=.8, color="#232323")+
+  geom_line(data=max_temp_avg, aes(x=year, y=diff, color=diff), size=.5)+ scale_x_continuous(breaks=seq(1910,2019, by=20))+
+scale_y_continuous(limits=c(-7,7))+
+  dark_theme_grey()+
+ scale_color_viridis_c(option = "plasma")+
+geom_text(data=subset(max_temp_avg,year==2019),aes(x=year,y=diff+.5, label=paste0(round(diff,1),"°")), size=15)+
+geom_text(data=max_temp_avg,aes(x=2019,y=-1, label="2019"),size=20, face="bold")+
+theme(axis.ticks=element_blank(), axis.text.x=element_text(size=40, family="Roboto", color="#D8D0D0"),
+legend.position = "none",                           axis.text.y=element_text(size=40,family="Roboto", face="bold", color="#D8D0D0"),
+    
+                                                                                  
+axis.title=element_text(size=50,face="bold", family="Roboto", color="#D8D0D0"),                                    panel.grid.major = element_line(color="#232323", size=.3),
+panel.grid.minor = element_line(color="#232323", size=.3),
+legend.background = element_blank(), strip.text = element_text(size=50, face="bold", color="#D8D0D0", family="Roboto"), strip.background = element_blank(), panel.background = element_blank())+
+labs(x="Year", y="Change in °C")+facet_wrap(~city)
+dev.off()
+```
+
+```{r}
+rainfall_avg<-aggregate(rainfall$rainfall, by=list(rainfall$city_name, rainfall$year), FUN=mean, na.rm=TRUE)
+rainfall_avg<-rainfall_avg %>% rename(city=Group.1,year=Group.2,rainfall=x)
+
+
+rainfall_avg<-rainfall_avg %>% filter(year>=1910 & year<2020)
+```
+
+```{r}
+png("facet-grid-rainfall.png", units="in", width=9, height=6, res=500)
+ggplot()+
+  geom_col(data=subset(rainfall_avg, year<2019), aes(x=year,y=rainfall), fill="#232323")+
+  geom_col(data=subset(rainfall_avg, year==2019), aes(x=year,y=rainfall, fill=rainfall), alpha=1)+
+  facet_wrap(~city)+
+  scale_x_continuous(breaks=seq(1910,2019, by=20))+
+  geom_text(data=rainfall_avg,aes(x=2019-1,y=8, label="2019"),size=20, face="bold")+
+  dark_theme_grey()+
+geom_text(data=subset(rainfall_avg, year==2019),aes(x=2019-1.5,y=rainfall+1, label=paste0(round(rainfall,1),"mm")),size=15, face="bold")+
+ scale_fill_viridis_c(option="viridis")+
+theme(axis.ticks=element_blank(), axis.text.x=element_text(size=40, family="Roboto", color="#D8D0D0"),
+legend.position = "none",                           axis.text.y=element_text(size=40,family="Roboto", face="bold", color="#D8D0D0"),
+    
+                                                          axis.title=element_text(size=50,face="bold", family="Roboto", color="#D8D0D0"),                                    
+panel.grid.major = element_line(color="#232323", size=.3),
+panel.grid.minor = element_line(color="#232323", size=.3),
+legend.background = element_blank(), strip.text = element_text(size=50, face="bold", color="#D8D0D0", family="Roboto"), strip.background = element_blank(), panel.background = element_blank())+
+labs(x="Year", y="Average Rainfall(mm)")
+dev.off()
+```
+
