@@ -3,6 +3,7 @@
 A compilation of data visualizations projects, mostly using the [R Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) library and other datasets 
 
 * Gallery
+
 Animated Measles Map
 ![Animated Measles Map](Animated Measles Map/measlesmap.gif)
 Australia Climate Maps
