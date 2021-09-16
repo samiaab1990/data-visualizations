@@ -1,3 +1,3 @@
-# Tidy Tuesday Projects
+# Data Visualizations
 
-A compilation of projects using [R Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) datasets
+A compilation of data visualizations projects, mostly using the [R Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) library and other datasets 
