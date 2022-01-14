@@ -31,7 +31,7 @@ Project: [Tidy Tuesday Week 2 2022](https://github.com/rfordatascience/tidytuesd
 ![Doom graph](CopyOfdoom_graph.png)
 
 ## W.E.B Dubois Graphs
-<img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='70%' height='70%'>
-<img src='CopyOfGA_pop_plot.png' alt='GA population' width='70%' height='70%'>
+<img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
+<img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'>
 
 Project: [Tidy Tuesday Week 8 2021](https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge)
