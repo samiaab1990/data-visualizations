@@ -7,7 +7,7 @@ A compilation of data visualizations projects, mostly using the [R Tidy Tuesday]
 * [Australia Climate Maps & Graphs](#australia-climate-maps-and-graphs)
 * [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [MF Doom Text Analysis Graph](#mf-doom-text-analysis-graph)
-* [W.E.B Dubois Graphs](#w.e.b.-dubois-graphs)
+* [W.E.B Dubois Graphs](#w.e.b-dubois-graphs)
 
 ## Animated Measles Map
 ![Animated Measles Map](CopyOfmeaslesmap.gif)
