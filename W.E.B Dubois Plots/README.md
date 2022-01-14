@@ -1,0 +1,2 @@
+# Recreating W.E.B Dubois' plots in R
+These data visualizations were a part of the [Tidy Tuesday Dubois Challenge](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-02-16/readme.md).
