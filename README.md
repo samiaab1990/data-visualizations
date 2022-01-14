@@ -15,8 +15,7 @@ A compilation of data visualizations projects, mostly using the [R Tidy Tuesday]
 Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-12-10)
 
 ## Australia Climate Maps and Graphs
-<img src='CopyOfDec2019avg.png' alt='Australia Temp Map' width='80%' height='80%'>
-    <img src='CopyOfRainfallavg.png' alt='Australia Rainfall Map' width='78%' height='78%'>
+<img src='CopyOfDec2019avg.png' alt='Australia Temp Map' width='80%' height='80%'><img src='CopyOfRainfallavg.png' alt='Australia Rainfall Map' width='78%' height='78%'>
 <img src='CopyOffacet-grid-temp.png' alt='Australia Temp' width='75%' height='75%'>
 <img src='CopyOffacet-grid-rainfall.png' alt='Australia rainfall' width='75%' height='75%'>
 
