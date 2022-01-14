@@ -16,7 +16,7 @@ Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytues
 
 ## Australia Climate Maps and Graphs
 <img src='CopyOfDec2019avg.png' alt='Australia Temp Map' width='70%' height='70%'>
-<p align='left'><img src='CopyOfRainfallavg.png' alt='Australia Rainfall Map' width='68%' height='68%'></p>
+<img src='CopyOfRainfallavg.png' alt='Australia Rainfall Map' width='70%' height='70%'>
 <img src='CopyOffacet-grid-temp.png' alt='Australia Temp' width='75%' height='75%'>
 <img src='CopyOffacet-grid-rainfall.png' alt='Australia rainfall' width='75%' height='75%'>
 
