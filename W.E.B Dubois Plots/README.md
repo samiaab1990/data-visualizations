@@ -7,7 +7,7 @@ These data visualizations were a part of the [Tidy Tuesday Dubois Challenge](htt
 ![Original Freeman vs Slaves Plot](FreeSlavesOriginal.jpg)
 
 ### Recreated in R
-![R Freeman vs Slaves Plot](Freed_slaves_plot.png)
+<img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
 
 ## Population change by race in Georgia
 
@@ -15,5 +15,6 @@ These data visualizations were a part of the [Tidy Tuesday Dubois Challenge](htt
 ![Original Georgia Census](GeorgiaCensusOriginal.jpg)
 
 ### Recreated in R
-![R Georgia Census Plot](GA_pop_plot.png)
+<img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'>
+
 
