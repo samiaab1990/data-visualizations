@@ -6,9 +6,9 @@ A compilation of data visualizations projects, mostly using the [R Tidy Tuesday]
 * [Animated Measles Map](#animated-measles-map)
 * [Australia Climate Maps](#australia-climate-maps)
 * [Australia Climate Graphs](#australia-climate-graphs)
-* [Bees Colony Loss Graph](#bees-plot)
+* [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [MF Doom Text Analysis Graph](#mf-doom-text-analysis-graph)
-* [W.E.B Dubois Plots](#dubois-challenge-graphs)
+* [W.E.B Dubois Graphs](#w.e.b.-dubois-graphs)
 
 
 ## Animated Measles Map
@@ -23,6 +23,6 @@ A compilation of data visualizations projects, mostly using the [R Tidy Tuesday]
 ![Bees graph](CopyOfbees_with_cairo.png)
 ## MF Doom Text Analysis graph
 ![Doom graph](CopyOfdoom_graph.png)
-## W.E.B Dubois Plots
+## W.E.B Dubois Graphs
 ![Freed slaves](CopyOfFreed_slaves_plot.png)
 ![GA population](CopyOfGA_pop_plot.png)
