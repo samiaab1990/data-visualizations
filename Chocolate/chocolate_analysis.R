@@ -106,7 +106,7 @@ p<-ggplot()+
   geom_point(data=centroids, aes(x=long, y=lat), size=.3, alpha=.5, color="white")+
   geom_path(data=dat, aes(x=lon, y=lat, group=group, color=country_origin),alpha=.2, size=.2)+
   labs(title="Where Have You Bean", 
-       subtitle="The path various chocolate beans are traveled from country of origin to location of manufacturer.",
+       subtitle="The path of various chocolate beans from country of origin to location of manufacturer.",
        caption="Source: Flavors of Cacao\nGithub:@samiaab1990")+
   scale_color_manual(values=pal)+
   dark_theme_void()+
