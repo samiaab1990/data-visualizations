@@ -3,6 +3,7 @@ library(tidyverse)
 library(ggplot2)
 library(ggdark)
 library(geosphere)
+library(sf)
 library(randomcoloR)
 library(Cairo)
 library(extrafont)
@@ -49,7 +50,7 @@ chocolate_dat<-chocolate %>%
 # find centroids (average of world coordinates by region)
 centroids<-world_coords %>% 
            group_by(region) %>% 
-           summarise(long=mean(long,na.rm=TRUE), lat=mean(lat, na.rm=TRUE)) %>%
+           mutate(centroid =c(long,lat))
            filter(region %in% c(chocolate_dat$company_location,chocolate_dat$country_of_bean_origin)) %>%
            mutate(long = ifelse(region=='USA',long+20,long),
                   lat = ifelse (region=='USA',lat-10,lat))
@@ -105,14 +106,14 @@ p<-ggplot()+
   geom_point(data=centroids, aes(x=long, y=lat), size=.3, alpha=.5, color="white")+
   geom_path(data=dat, aes(x=lon, y=lat, group=group, color=country_origin),alpha=.2, size=.2)+
   labs(title="Where Have You Bean", 
-       subtitle=" The path chocolate beans are traveled from country of origin to country of manufacturer.",
+       subtitle="The path various chocolate beans are traveled from country of origin to location of manufacturer.",
        caption="Source: Flavors of Cacao\nGithub:@samiaab1990")+
   scale_color_manual(values=pal)+
   dark_theme_void()+
   theme(legend.position="none",
-        plot.title=element_text(size=20, face="bold", hjust=.1, vjust=-1, family="Segoe UI"),
-        plot.subtitle=element_text(size=15, hjust=.16, vjust=-1,family="Segoe UI"),
-        plot.caption=element_text(size=12, face="bold", family="Segoe UI"))
+        plot.title=element_text(size=25, face="bold", family="Segoe UI"),
+        plot.subtitle=element_text(size=20, family="Segoe UI"),
+        plot.caption=element_text(size=15, face="bold", family="Segoe UI"))
 
 
 ggsave(p, filename = '~/GitHub/DataViz/Chocolate/choc_plot.png', dpi = 300, type = 'cairo',
