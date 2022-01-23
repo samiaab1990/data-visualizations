@@ -1,3 +1,4 @@
+# libraries
 library(tidyverse)
 library(ggplot2)
 library(ggdark)
@@ -7,9 +8,14 @@ library(Cairo)
 library(extrafont)
 CairoWin()
 
+# read the csv file
 chocolate <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-01-18/chocolate.csv')
 
+# from the ggplot package, get the coordinates of all the world countries 
 world_coords<-map_data("world")
+
+# for each manufacturer, find the distinct manufacturer-company location-country of bean origin link
+## cleaning manually after checking merges in later steps 
 
 chocolate_dat<-chocolate %>%
   select(company_manufacturer, company_location, country_of_bean_origin) %>%
@@ -40,6 +46,7 @@ chocolate_dat<-chocolate %>%
              country_of_bean_origin=="Sumatra" | country_of_bean_origin=="Sulawesi" ~ "Indonesia",
              TRUE ~ country_of_bean_origin))
 
+# find centroids (average of world coordinates by region)
 centroids<-world_coords %>% 
            group_by(region) %>% 
            summarise(long=mean(long,na.rm=TRUE), lat=mean(lat, na.rm=TRUE)) %>%
@@ -47,13 +54,14 @@ centroids<-world_coords %>%
            mutate(long = ifelse(region=='USA',long+20,long),
                   lat = ifelse (region=='USA',lat-10,lat))
  
+# get lat long for each company manufacturer & check na
 company_xy<-chocolate_dat %>% 
   left_join(centroids, by=c("company_location"="region")) %>%
   rename(long_company=long, lat_company=lat) 
 
 check_na<-company_xy %>% filter(is.na(long_company)) %>% distinct(company_location)
 
-
+# get lat long for each country of bean origin & check na
 origin_xy<-chocolate_dat %>% 
   left_join(centroids, by=c("country_of_bean_origin"="region")) %>%
   rename(long_origin=long, lat_origin=lat) %>%
@@ -61,6 +69,7 @@ origin_xy<-chocolate_dat %>%
 
 check_na<-origin_xy %>% filter(is.na(long_origin)) %>% distinct(country_of_bean_origin)
 
+# create a data frame with both origin & manufacturer lat & long
 map_dat<-merge(company_xy,origin_xy)
 
 dat <- data.frame()
