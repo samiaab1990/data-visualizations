@@ -24,7 +24,7 @@ Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytues
 Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-07/readme.md)
 
 ## Bees Colony Loss Graph
-![Bees graph](CopyOfbees_with_cairo.png)
+![Bees graph](CopyOfbees_with_cairo.png) 
 
 Project: [Tidy Tuesday Week 2 2022](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-11/readme.md)
 
