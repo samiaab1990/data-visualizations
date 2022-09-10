@@ -35,7 +35,7 @@ Project: [Tidy Tuesday Week 2 2022](https://github.com/rfordatascience/tidytuesd
 Project: [Tidy Tuesday Week 3 2022](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-18/readme.md)
 
 ## Legos Waffle Chart
-<img src='CopyOflegos_text.png' alt='Legos' width='100%' height='100%'>
+<img src='CopyOflegos_test.png' alt='Legos' width='100%' height='100%'>
 
 ## MF Doom Text Analysis graph
 ![Doom graph](CopyOfdoom_graph.png)
