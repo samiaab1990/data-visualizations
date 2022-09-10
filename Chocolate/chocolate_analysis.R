@@ -105,7 +105,7 @@ p<-ggplot()+
   geom_map(data = world_coords, map = world_coords,
   aes(long, lat, map_id = region), size=.1, color=NA, fill="#252525")+
   geom_point(data=centroids, aes(x=long, y=lat), size=.3, alpha=.5, color="white")+
-  geom_path(data=dat, aes(x=lon, y=lat, group=group, color=country_origin),alpha=.2, size=.2)+
+  geom_path(data=dat, aes(x=lon, y=lat, group=group, color=country_origin),alpha=.1, size=.4)+
   labs(title="<span style = 'color: #F8766D'>Where </span><span style='color:#CD9600'>Have </span><span style = 'color:#7CAE00'>You </span><span style = 'color:#00BE67'>Bean</span>", 
        subtitle="The path of various chocolate beans from country of origin to location of manufacturer",
        caption="Source: Flavors of Cacao\nGithub:@samiaab1990")+
