@@ -5,6 +5,7 @@ library(png)
 library(ggimage)
 library(Cairo)
 library(extrafont)
+memory.limit(24000)
 CairoWin()
 
 # read in data
@@ -49,8 +50,8 @@ ggtitle("Winter US Bee Colony Loss",
   subtitle = "Percentages of bee colonies lost during from October to December \nby year between 2015 to 2021.")+
 facet_geo(~state, label="code")+
 theme(
-plot.title = element_text(size=55, face="bold", color="#8c602a", family="Nunito ExtraBold"),
-plot.subtitle = element_text(size=35, face="bold", color="#e8c054", family="Nunito ExtraBold"),
+plot.title = element_text(size=70, face="bold", color="#8c602a", family="Nunito ExtraBold", hjust=.5),
+plot.subtitle = element_text(size=35, face="bold", color="#e8c054", family="Nunito ExtraBold", hjust=.5),
 panel.grid.major = element_blank(),
 panel.grid.minor = element_blank(),
 strip.text = element_text(size=30, face="bold", color="#B88300", family="Nunito ExtraBold"),
