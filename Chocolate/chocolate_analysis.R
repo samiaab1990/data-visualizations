@@ -4,10 +4,12 @@ library(ggplot2)
 library(ggdark)
 library(geosphere)
 library(sf)
+library(rgdal)
 library(randomcoloR)
 library(Cairo)
 library(extrafont)
 library(ggtext)
+library(ggalt)
 CairoWin()
 
 # read the csv file
@@ -106,15 +108,15 @@ p<-ggplot()+
   aes(long, lat, map_id = region), size=.1, color=NA, fill="#252525")+
   geom_point(data=centroids, aes(x=long, y=lat), size=.3, alpha=.5, color="white")+
   geom_path(data=dat, aes(x=lon, y=lat, group=group, color=country_origin),alpha=.1, size=.4)+
-  labs(title="<span style = 'color: #F8766D'>Where </span><span style='color:#CD9600'>Have </span><span style = 'color:#7CAE00'>You </span><span style = 'color:#00BE67'>Bean</span>", 
+  labs(title=paste0("<span style = 'color:",pal[1],"'>Where </span><span style='color:",pal[2],"'>Have </span><span style = 'color:",pal[3],"'>You </span><span style = 'color:",pal[4],"'>Bean</span>"), 
        subtitle="The path of various chocolate beans from country of origin to location of manufacturer",
-       caption="Source: Flavors of Cacao\nGithub:@samiaab1990")+
+       caption="<b>Source:</b> Flavors of Cacao<br><b>Github:</b>@samiaab1990")+
   scale_color_manual(values=pal)+
   dark_theme_void()+
   theme(legend.position="none",
-        plot.title=element_markdown(size=60, face="bold", family="Segoe UI", hjust=.5),
+        plot.title=element_markdown(size=60, face="bold", family="Bungee", hjust=.5),
         plot.subtitle=element_text(size=20, family="Segoe UI", hjust=.5),
-        plot.caption=element_text(size=15, face="bold", family="Segoe UI"))
+        plot.caption=element_markdown(size=15, hjust=1, family="Segoe UI"))
 
 
 ggsave(p, filename = '~/GitHub/DataViz/Chocolate/choc_plot.png', dpi = 500, type = 'cairo',
