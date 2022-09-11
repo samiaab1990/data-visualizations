@@ -131,7 +131,7 @@ p<-ggplot()+
   geom_path(data=dat, aes(x=lon, y=lat, group=group, color=country_origin),alpha=.1, size=.4)+
   annotate("richtext", x = max_long-70, y = max_lat-10, family="Segoe UI", fill = NA, label.color = NA, color='white',label = paste0("The US has the most<br>company locations globally,<br>recieving beans from<br><b style='color:#FDEE00'>", centroids %>% filter(region=="USA") %>% pull(counts_import)," countries</b>"), hjust=0)+
   geom_segment(aes(x = max_long-40, y = max_lat-10, xend = max_long-1, yend = max_lat - 1), color="white", linetype="dotted")+
-  annotate("richtext", x = max_long2, y = max_lat2-20, family="Segoe UI", fill = NA, label.color = NA, color='white',label = paste0("Beans from Madagascar reach<br><b style='color:#6DFEEE'>", centroids %>% filter(region=="Madagascar") %>% pull(counts_export)," countries</b>,<br>the most out of any country<br>where cocoa beans originate from."), hjust=0)+
+  annotate("richtext", x = max_long2, y = max_lat2-20, family="Segoe UI", fill = NA, label.color = NA, color='white',label = paste0("Beans from Madagascar reach<br><b style='color:#6DFEEE'>", centroids %>% filter(region=="Madagascar") %>% pull(counts_export)," countries</b>,<br>the most out of any country<br>where beans originate from."), hjust=0)+
   geom_segment(aes(x = max_long2, y = max_lat2-20, xend = max_long2, yend = max_lat2 - 1), color="white", linetype="dotted")+
   labs(title=paste0("<span style = 'color:",pal[1],"'>Where </span><span style='color:",pal[2],"'>Have </span><span style = 'color:",pal[3],"'>You </span><span style = 'color:",pal[4],"'>Bean</span>"), 
        subtitle="The path of various chocolate beans from country of origin to location of manufacturer",
