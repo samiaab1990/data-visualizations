@@ -48,7 +48,7 @@ ggtitle("Bee Colonies in the Winter",
   subtitle = "Percentages of bee colonies lost during from October to December \nby year between 2015 to 2021 in the United States.")+
 facet_geo(~state, label="code")+
 theme(
-plot.title = element_text(size=100, face="bold", color="#533B00", family="Pacifico", hjust=.5, margin=margin(10,0,0,0)),
+plot.title = element_text(size=100, face="bold", color="#835F07", family="Pacifico", hjust=.5, margin=margin(10,0,0,0)),
 plot.subtitle = element_text(size=35, color="#7E5A01", family="Nunito ExtraBold", hjust=.5),
 panel.grid.major = element_blank(),
 panel.grid.minor = element_blank(),
