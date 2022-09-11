@@ -65,6 +65,10 @@ company_xy<-chocolate_dat %>%
 
 check_na<-company_xy %>% filter(is.na(long_company)) %>% distinct(company_location)
 
+# get counts of country that receives the most diverse beans (USA)
+
+counts_country_import<-company_xy %>% group_by(company_location) %>% summarise(counts_import = n_distinct(country_of_bean_origin)) 
+
 # get lat long for each country of bean origin & check na
 origin_xy<-chocolate_dat %>% 
   left_join(centroids, by=c("country_of_bean_origin"="region")) %>%
@@ -72,6 +76,14 @@ origin_xy<-chocolate_dat %>%
   filter(!is.na(long_origin))
 
 check_na<-origin_xy %>% filter(is.na(long_origin)) %>% distinct(country_of_bean_origin)
+
+# get counts of country of bean origin, whose bean reaches the most countries (Madagascar)
+
+counts_country_export<-company_xy %>% group_by(country_of_bean_origin) %>% summarise(counts_export = n_distinct(company_location)) %>% arrange(desc(counts_export))
+
+# bind import and export counts with centroids
+
+centroids<-centroids %>% merge(counts_country_import, by.x = "region", by.y="company_location") %>% merge(counts_country_export, by.x ="region", by.y="country_of_bean_origin")
 
 # create a data frame with both origin & manufacturer lat & long
 map_dat<-merge(company_xy,origin_xy)
@@ -99,15 +111,28 @@ inter<-inter %>% mutate(group = ifelse(lon>0, paste0(as.character(i),"a"),paste0
 dat<-bind_rows(dat, inter)
 }
 
+# generate random pallete colors based on distinct country origin
 n<-dat %>% select(country_origin) %>% n_distinct()
 pal <- distinctColorPalette(n)
 
 
+# find the lat,long for US and Madagascar for annotation
+max_long<-centroids %>% filter(region == "USA") %>% pull(long)
+max_lat<-centroids %>% filter(region=="USA") %>% pull(lat)
+
+max_long2 <- centroids %>% filter(region=="Madagascar") %>% pull(long)
+max_lat2 <- centroids %>% filter(region=="Madagascar") %>% pull(lat)
+
 p<-ggplot()+
   geom_map(data = world_coords, map = world_coords,
   aes(long, lat, map_id = region), size=.1, color=NA, fill="#252525")+
-  geom_point(data=centroids, aes(x=long, y=lat), size=.3, alpha=.5, color="white")+
+  geom_point(data=centroids, aes(x=long, y=lat, size=counts_import),alpha=.5, color="#FDEE00")+
+  geom_point(data=centroids, aes(x=long, y=lat, size=counts_export),alpha=.5, color="#6DFEEE")+
   geom_path(data=dat, aes(x=lon, y=lat, group=group, color=country_origin),alpha=.1, size=.4)+
+  annotate("richtext", x = max_long-70, y = max_lat-10, family="Segoe UI", fill = NA, label.color = NA, color='white',label = paste0("The US has the most<br>company locations globally,<br>recieving beans from<br><b style='color:#FDEE00'>", centroids %>% filter(region=="USA") %>% pull(counts_import)," countries</b>"), hjust=0)+
+  geom_segment(aes(x = max_long-40, y = max_lat-10, xend = max_long-1, yend = max_lat - 1), color="white", linetype="dotted")+
+  annotate("richtext", x = max_long2, y = max_lat2-20, family="Segoe UI", fill = NA, label.color = NA, color='white',label = paste0("Beans from Madagascar reach<br><b style='color:#6DFEEE'>", centroids %>% filter(region=="Madagascar") %>% pull(counts_export)," countries</b>,<br>the most out of any country<br>where cocoa beans originate from."), hjust=0)+
+  geom_segment(aes(x = max_long2, y = max_lat2-20, xend = max_long2, yend = max_lat2 - 1), color="white", linetype="dotted")+
   labs(title=paste0("<span style = 'color:",pal[1],"'>Where </span><span style='color:",pal[2],"'>Have </span><span style = 'color:",pal[3],"'>You </span><span style = 'color:",pal[4],"'>Bean</span>"), 
        subtitle="The path of various chocolate beans from country of origin to location of manufacturer",
        caption="<b>Source:</b> Flavors of Cacao<br><b>Github:</b>@samiaab1990")+
