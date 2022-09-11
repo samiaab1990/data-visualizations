@@ -1,6 +1,6 @@
 # Data Visualizations
 
-A compilation of data visualizations projects. 
+A compilation of data visualizations projects made using the R Programming Language. 
 
 # Gallery
 * [Animated Measles Map](#animated-measles-map)
