@@ -30,7 +30,7 @@ Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesd
 Project: [Tidy Tuesday Week 2 2022](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-11/readme.md)
 
 ## Chocolate Bars Bean Origin to Manufacturer Connection Map
-<img src ='CopyOfchoc_plot.png' alt='Chocolate map' width='100%' height='100%'>
+<img src ='CopyOfchoc_plot.png' alt='Chocolate map' width='100%' height='100%'> 
 
 Project: [Tidy Tuesday Week 3 2022](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-18/readme.md)
 
