@@ -141,7 +141,7 @@ p<-ggplot()+
   theme(legend.position="none",
         plot.title=element_markdown(size=60, face="bold", family="Bungee", hjust=.5),
         plot.subtitle=element_text(size=20, family="Segoe UI", hjust=.5),
-        plot.caption=element_markdown(size=15, hjust=1, family="Segoe UI"))
+        plot.caption=element_markdown(size=10, hjust=1, family="Segoe UI"))
 
 
 ggsave(p, filename = '~/GitHub/DataViz/Chocolate/choc_plot.png', dpi = 500, type = 'cairo',
