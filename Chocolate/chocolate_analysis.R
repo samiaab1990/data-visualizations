@@ -54,6 +54,7 @@ chocolate_dat<-chocolate %>%
 centroids<-world_coords %>% 
            group_by(region) %>% 
            summarise(long = mean(long, na.rm=TRUE), lat = mean(lat, na.rm=TRUE)) %>% 
+           ungroup() %>% 
            filter(region %in% c(chocolate_dat$company_location,chocolate_dat$country_of_bean_origin)) %>%
            mutate(long = ifelse(region=='USA',long+20,long),
                   lat = ifelse (region=='USA',lat-10,lat))
@@ -79,11 +80,11 @@ check_na<-origin_xy %>% filter(is.na(long_origin)) %>% distinct(country_of_bean_
 
 # get counts of country of bean origin, whose bean reaches the most countries (Madagascar)
 
-counts_country_export<-company_xy %>% group_by(country_of_bean_origin) %>% summarise(counts_export = n_distinct(company_location)) %>% arrange(desc(counts_export))
+counts_country_export<-origin_xy %>% group_by(country_of_bean_origin) %>% summarise(counts_export = n_distinct(company_location)) %>% arrange(desc(counts_export))
 
 # bind import and export counts with centroids
 
-centroids<-centroids %>% merge(counts_country_import, by.x = "region", by.y="company_location") %>% merge(counts_country_export, by.x ="region", by.y="country_of_bean_origin")
+centroids<-centroids %>% left_join(counts_country_import, by = c("region"="company_location")) %>% left_join(counts_country_export, by = c("region"="country_of_bean_origin"))
 
 # create a data frame with both origin & manufacturer lat & long
 map_dat<-merge(company_xy,origin_xy)
