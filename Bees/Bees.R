@@ -34,7 +34,7 @@ loadfonts(device="win")
 bee_plot<-bee_dat %>% 
 ggplot()+
 geom_polygon(data=hexagon, aes(x=x, y=y), color="#B88300", fill="#ffe49e", alpha=.5, size=3)+
-geom_line(aes(x=as.factor(year), y=winter_pct, group=state),linetype="dotted", size=.8)+
+geom_line(aes(x=as.factor(year), y=winter_pct, group=state),linetype="dotted", color='black',size=.8)+
 geom_image(aes(x=as.factor(year+2), y=winter_pct+3, image=image, group=state), size=.4)+
 geom_polygon(data=hexagon, aes(x=x, y=y), color="black", fill=NA, size=2)+
 theme_minimal()+
@@ -43,15 +43,13 @@ expand_limits(x=c(1,10),
 scale_x_discrete(breaks=c("2015","2016","2017","2018","2019","2020","2021"),
                  labels=c("2015","","","","","","2021"))+
 scale_y_continuous(breaks=c(0,10,20,30,40))+
-xlab("Year")+
-ylab("% Colony Loss")+
 labs(caption="Source: USDA\nGithub: @samiaab1990")+
-ggtitle("Winter US Bee Colony Loss", 
-  subtitle = "Percentages of bee colonies lost during from October to December \nby year between 2015 to 2021.")+
+ggtitle("Bee Colonies in the Winter", 
+  subtitle = "Percentages of bee colonies lost during from October to December \nby year between 2015 to 2021 in the United States.")+
 facet_geo(~state, label="code")+
 theme(
-plot.title = element_text(size=70, face="bold", color="#8c602a", family="Nunito ExtraBold", hjust=.5),
-plot.subtitle = element_text(size=35, face="bold", color="#e8c054", family="Nunito ExtraBold", hjust=.5),
+plot.title = element_text(size=100, face="bold", color="#8c602a", family="Pacifico", hjust=.5),
+plot.subtitle = element_text(size=35, face="bold", color="#2C1501", family="Nunito ExtraBold", hjust=.5),
 panel.grid.major = element_blank(),
 panel.grid.minor = element_blank(),
 strip.text = element_text(size=30, face="bold", color="#B88300", family="Nunito ExtraBold"),
@@ -59,8 +57,7 @@ axis.text.y = element_text(size=22, face="bold", color="#B88300", family="Nunito
 axis.text.x = element_text(size=22, face="bold", color="#B88300", family="Nunito ExtraBold"),
 axis.ticks.x = element_line(size=.5, color="black"),
 axis.ticks.y = element_line(size=.5, color="black"),
-axis.title = element_text(size=30, face="bold", color="#B88300", family="Nunito ExtraBold"),
-axis.title.y = element_text(vjust=2),
+axis.title = element_blank(),
 plot.caption = element_text(size=22, face="bold", color="#B88300", family="Nunito ExtraBold"),
 panel.spacing = unit(1,"lines")
 #panel.spacing.y=unit(1,"lines")
