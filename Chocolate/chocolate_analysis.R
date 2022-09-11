@@ -136,13 +136,13 @@ p<-ggplot()+
   geom_segment(aes(x = max_long2, y = max_lat2-20, xend = max_long2, yend = max_lat2 - 1), color="white", linetype="dotted")+
   labs(title=paste0("<span style = 'color:",pal[1],"'>Where </span><span style='color:",pal[2],"'>Have </span><span style = 'color:",pal[3],"'>You </span><span style = 'color:",pal[4],"'>Bean</span>"), 
        subtitle="The path of various chocolate beans from country of origin to location of manufacturer",
-       caption="<b>Source:</b> Flavors of Cacao<br><b>Github:</b>@samiaab1990")+
+       caption="<span style = 'color:#FDEE00; font-size:30px'>&#x2022;</span><span style='font-size:15px'>number of distinct countries where beans are imported from </span><span style = 'color:#6DFEEE; font-size:30px'>&#x2022;</span><span style='font-size:15px'>number of distinct countries where beans go</span><br><br><br><b>Source:</b> Flavors of Cacao<br><b>Github:</b>@samiaab1990")+
   scale_color_manual(values=pal)+
   dark_theme_void()+
   theme(legend.position="none",
         plot.title=element_markdown(size=60, face="bold", family="Bungee", hjust=.5),
-        plot.subtitle=element_text(size=20, family="Segoe UI", hjust=.5),
-        plot.caption=element_markdown(size=10, hjust=1, family="Segoe UI"))
+        plot.subtitle=element_markdown(size=20, family="Segoe UI", hjust=.5),
+        plot.caption=element_markdown(size=10, hjust=.5, family="Segoe UI", margin=margin(-30,0,0,0)))
 
 
 ggsave(p, filename = '~/GitHub/DataViz/Chocolate/choc_plot.png', dpi = 500, type = 'cairo',
