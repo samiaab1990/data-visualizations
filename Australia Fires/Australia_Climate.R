@@ -118,7 +118,7 @@ dec_avg<-ggplot()+
   caption = "<b>Source:</b> Australian Government Bureau of Meteorology<br><b>Github:</b>samiaab1990</b>",
   subtitle = 
    paste0(make_title,"<br><br>2019 was Australia's warmest year in history, breaking previous records with a <b style='color:#F29D80'>1.52 °C increase</b><br> in mean average temperatures relative to the average temperatures recorded between 1961-1990<br> and a
-   <b style='color:#EC9884'>2.09°C </b>increase in mean maximum temperatures. The warmest months were <b style='color:#E69387'>January</b>,<b style='color:#DF8D8B'> March </b><br>and <b style='color:#D9888E'>December</b>. The map below shows the daily mean maximum temperatures for December 2019."),
+   <b style='color:#EC9884'>2.09°C increase</b> in mean maximum temperatures. The warmest months were <b style='color:#E69387'>January</b>,<b style='color:#DF8D8B'> March </b><br>and <b style='color:#D9888E'>December</b>. The map below shows the daily mean maximum temperatures for December 2019."),
   )+
   geom_text_repel(data=australia_cities,aes(long,lat,label=city_name), size=5, color="#D8D0D0", family="Roboto")+
   scale_fill_viridis_c(option = "plasma", breaks=breaks, labels=labels) +
@@ -195,7 +195,7 @@ rain_avg_plot<-ggplot()+
     title = "<b>Australia Climate 2019</b>",
     caption = "<b>Source:</b> Australian Government Bureau of Meteorology<br><b>Github:</b>samiaab1990</b>",
     subtitle = 
-      paste0(make_title,"<br><br>Most parts of Australia were drier than average in 2019, recieving the <b style='color:#69EFC6'>least rainfall since 1900</b>.The <br>total rainfall across the country was <b style='color:#6EE9C8'>277.6 millimeters</b>&mdash;<b style='color:#74E4CB'>40% below</b> the average rainfall between <br> 1961-1990. The map below shows the rainfall totals for December 2019."),
+      paste0(make_title,"<br><br>Most parts of Australia were drier than average in 2019, recieving the <b style='color:#69EFC6'>least rainfall since 1900</b>.<br>The total rainfall across the country was <b style='color:#6EE9C8'>277.6 millimeters</b>&mdash;<b style='color:#74E4CB'>40% below</b> the average rainfall <br> between 1961-1990. The map below shows the rainfall totals for December 2019."),
   )+
   theme(
     plot.title = element_markdown(size=80, family="Bebas Neue", color="#D8D0D0", hjust=.5),
