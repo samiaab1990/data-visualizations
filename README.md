@@ -16,10 +16,10 @@ A compilation of data visualizations projects made using the R Programming Langu
 Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-12-10)
 
 ## Australia Climate Maps and Graphs
-<img src='CopyOfDec2019avg.png' alt='Australia Temp Map' width='70%' height='70%'>
-<img src='CopyOfRainfallavg.png' alt='Australia Rainfall Map' width='70%' height='70%'>
-<img src='CopyOffacet-grid-temp.png' alt='Australia Temp' width='75%' height='75%'>
-<img src='CopyOffacet-grid-rainfall.png' alt='Australia rainfall' width='75%' height='75%'>
+<p align='center'>
+<img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'>
+<img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
+</p>
 
 Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-07/readme.md)
 
@@ -39,7 +39,9 @@ Project: [Tidy Tuesday Week 3 2022](https://github.com/rfordatascience/tidytuesd
 Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-06)
 
 ## W.E.B Dubois Graphs
+<p align=center>
 <img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
 <img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'>
+</p>
 
 Project: [Tidy Tuesday Week 8 2021](https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge)
