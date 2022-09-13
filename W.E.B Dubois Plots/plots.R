@@ -28,7 +28,6 @@ library(grid)
 library(gridExtra)
 library(showtext)
 library(pBrackets)
-library(gganimate)
 
 font_add("Vasarely", "Vasarely.otf")
 showtext_auto()
@@ -44,7 +43,8 @@ georgia_pop_plot<-georgia_pop %>%
   scale_y_reverse(breaks=seq(0,100, by=5), expand=c(0,0))+
   scale_linetype_manual(labels=c("Colored                                                                 ",
                                  "White"),values=c("solid", "longdash"))+
-  ggtitle("Comparitive Increase of White and Colored\nPopulation of Georgia.")+
+  labs(title = "Comparitive Increase of White and Colored\nPopulation of Georgia.",
+       caption = "Github:@samiaab1990")+
   xlab("")+
   ylab("")+
   coord_flip()+
@@ -64,7 +64,8 @@ georgia_pop_plot<-georgia_pop %>%
     legend.text=element_text(size=30, family="Vasarely", margin=margin(r=10,l=-10, unit="pt")),
     legend.background=element_blank(),
     legend.key=element_rect(fill="#decdb1"),
-    plot.title = element_text(family="Vasarely", size=55, lineheight=.3, hjust=.4, face="bold")
+    plot.title = element_text(family="Vasarely", size=55, lineheight=.3, hjust=.4, face="bold"),
+    plot.caption = element_text(family="Vasarely", size=20, hjust=1)
 )
 
 png("GA_pop_plot.png", units="in", width=6, height=8, res=300)
@@ -87,8 +88,10 @@ ggplot()+
   geom_text(data=freed_slaves, aes(x=1830, y=96, label="FREE - LIBRE"), color="#191b1a", size=25, family="Vasarely", fontface="bold")+
   scale_x_continuous(position="top", breaks=c(freed_slaves %>% select(Year) %>% pull()),labels=c(freed_slaves %>% select(Year) %>% pull()))+
   xlab("")+
+  labs(caption="Github:@samiaab1990")
   theme(
     plot.background = element_rect(fill="#D5CDC2"),
+    plot.caption = element_text(family="Vasarely", size=20, hjust=1),
     panel.background = element_rect(fill="#D5CDC2"),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -99,13 +102,3 @@ ggplot()+
   )
 dev.off()  
 
-# If 100% of each is in 2/6 pie (1/3), then multiply all by 1/3
-# Remaining 2 1/6 chunks will be a filler chunk 
-
-occupation %>% 
-
-
-income %>%
-pivot_longer(cols=c("Rent"))
-ggplot()+
-geom_col(data=income, aes(x))
