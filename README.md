@@ -39,7 +39,9 @@ Project: [Tidy Tuesday Week 3 2022](https://github.com/rfordatascience/tidytuesd
 Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-06)
 
 ## W.E.B Dubois Graphs
+<p align=center>
 <img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
 <img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'>
+</p>
 
 Project: [Tidy Tuesday Week 8 2021](https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge)
