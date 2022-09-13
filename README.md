@@ -4,7 +4,7 @@ A compilation of data visualizations projects made using the R Programming Langu
 
 # Gallery
 * [Animated Measles Map](#animated-measles-map)
-* [Australia Climate Maps & Graphs](#australia-climate-maps-and-graphs)
+* [Australia Climate Maps](#australia-climate-maps)
 * [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
 * [Legos Waffle Chart](#legos-waffle-chart)
@@ -15,7 +15,7 @@ A compilation of data visualizations projects made using the R Programming Langu
 
 Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-12-10)
 
-## Australia Climate Maps and Graphs
+## Australia Climate Maps 
 <p align='center'>
 <img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'>
 <img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
