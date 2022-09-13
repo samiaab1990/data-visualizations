@@ -19,7 +19,7 @@ Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytues
 <p align='center'>
 <img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'>
 <img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
-</p>
+</p> 
 
 Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-07/readme.md)
 
