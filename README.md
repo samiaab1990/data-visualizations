@@ -4,6 +4,7 @@ A compilation of data visualizations projects made fully using the R programming
 
 # Gallery
 * [Animated Measles Map](#animated-measles-map)
+* [ACS Artists by Occupation and Race Graph](#acs-artists-graph)
 * [Australia Climate Maps](#australia-climate-maps)
 * [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
@@ -14,6 +15,11 @@ A compilation of data visualizations projects made fully using the R programming
 ![Animated Measles Map](CopyOfmeaslesmap.gif)
 
 Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-12-10)
+
+## ACS Artists by Occupation and Race Graph
+![ACS Artists by Occupation and Race Graph](CopyOfartists.png)
+
+Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-27)
 
 ## Australia Climate Maps 
 <p align='center'>
