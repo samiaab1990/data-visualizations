@@ -40,7 +40,7 @@ guides(fill = guide_legend(ncol=1, label.position = "right", title = element_bla
 scale_fill_manual(values=pal)+
   labs(title = "Calling All Artists",
        subtitle = "The Arts Data Profile, from The American Community Survey, gives national and state-level estimates<br>of artists in the workforce. State-level estimates are available for the total number of artists and for<br>individual artists in <b>13 specific occupations</b>. The concentration of each artist in the state's labor force<br>relative to the US labor force is measured by a <b>location quotient (LQ)</b>, where a location quotient above<br> 1 indicates a greater share than the national labor force.The following chart shows the <b>share\n of states <br>(as a percentage)</b> where the labor quotient was higher than 1 for <b>each occupation</b> by <b>race</b>.",
-       caption = "<b>Source</b>: ACS<br><b>Github</b>: samiaab1990<br><b>Brush vector</b>: Mehwish via Flaticon")+
+       caption = "<b>Source</b>: ACS<br><b>Github</b>: samiaab1990<br><b>Paintbrush icon</b>: Mehwish via Flaticon")+
 theme(
   plot.background = element_rect(fill="#F0EBB2"),
   panel.background = element_blank(),
@@ -61,7 +61,7 @@ theme(
 )
 
 
-ggsave(p, filename = '~/GitHub/DataViz/Artists/artists_test.png', dpi = 200, type = 'cairo',
+ggsave(p, filename = '~/GitHub/DataViz/Artists/artists.png', dpi = 200, type = 'cairo',
        width = 20, height = 15, units = 'in')
 
 
