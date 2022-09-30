@@ -39,7 +39,7 @@ scale_y_continuous(expand = c(0, 0), limits=c(0,50), labels = ylabels)+
 guides(fill = guide_legend(ncol=1, label.position = "right", title = element_blank()))+
 scale_fill_manual(values=pal)+
   labs(title = "Calling All Artists",
-       subtitle = "The Arts Data Profile, from The American Community Survey, gives national and state-level estimates<br>of artists in the workforce. State-level estimates are available for the total number of artists and for<br>individual artists in <b>13 specific occupations</b>. The concentration of each artist in the state's labor force<br>relative to the US labor force is measured by a <b>location quotient (LQ)</b>, where a location quotient above<br> 1 indicates a greater share than the national labor force.The following chart shows the <b>share\n of states <br>(as a percentage)</b> where the labor quotient was higher than 1 for <b>each occupation</b> by <b>race</b>.",
+       subtitle = "The Arts Data Profile, from The American Community Survey, gives national and state-level estimates of artists in the workforce. State-level estimates are available for the total number of artists and for individual artists in <b>13 specific occupations</b>. The concentration of each artist in the state's labor force relative to the US labor force is measured by a <b>location quotient (LQ)</b>, where a location quotient above 1 indicates a greater share than the national labor force.The following chart shows the <b>share\n of states (in percent) </b> where the labor quotient was higher than 1 for <b>each occupation</b> by <b>race</b>.",
        caption = "<b>Source</b>: ACS<br><b>Github</b>: samiaab1990<br><b>Paintbrush icon</b>: Mehwish via Flaticon")+
 theme(
   plot.background = element_rect(fill="#F0EBB2"),
@@ -53,7 +53,8 @@ theme(
   legend.text.align = 0,
   legend.text = element_text(family="Bebas Neue", size=20, hjust=.5, color="#6A526A"),
   plot.title = element_text(family="Moving Skate", size=200, hjust=.5, color="#6A526A"),
-  plot.subtitle = element_markdown(family="Patrick Hand", size=22, hjust=.5, color="#6A526A"),
+  plot.subtitle = element_textbox(family="Patrick Hand", size=22, hjust=.5, color="#6A526A",width = unit(.7, "npc"),
+                                  margin = margin(b = 15)),
   plot.caption = element_markdown(family="Patrick Hand", size=15, hjust=1, color="#6A526A"),
   axis.text.x= element_markdown(size=25, family = "Bebas Neue", color="#6A526A"),
   axis.text.y = element_text(size=25, family="Patrick Hand", color="#6A526A", face="bold")
