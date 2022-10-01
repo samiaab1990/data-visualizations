@@ -29,6 +29,7 @@ CairoWin()
 sysfonts::font_add_google("Dosis","Dosis")
 sysfonts::font_add_google("Bebas Neue","Bebas Neue")
 showtext::showtext_auto()
+
 # rainfall and temperature datasets
 rainfall <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/rainfall.csv')
 temperature <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/temperature.csv')
@@ -114,17 +115,16 @@ dec_avg<-ggplot()+
                size = 0.3) +
   geom_point(data=australia_cities,aes(long,lat), color="#D8D0D0")+
   labs(
-  title = paste0("<b>Australia Climate 2019</b><br><span style='font-size:50px'>",make_title,"</style>"),
-  caption = "<b>Source:</b> Australian Government Bureau of Meteorology<br><b>Github:</b>samiaab1990</b>",
-  subtitle = 
-   "<br><br>2019 was Australia's warmest year in history, breaking previous records with a <b style='color:#F29D80'>1.52 캜 increase</b> in mean average temperatures relative to the average temperatures recorded between 1961-1990 and a <b style='color:#EC9884'>2.09캜 increase</b> in mean maximum temperatures. The warmest months were <b style='color:#E69387'>January</b>,<b style='color:#DF8D8B'> March </b>and <b style='color:#D9888E'>December</b>. The map below shows the daily mean maximum temperatures for December 2019."
+    title = paste0("<b>Australia Climate 2019</b><br><span style='font-size:50px'>",make_title,"</style>"),
+    caption = "<b>Source:</b> Australian Government Bureau of Meteorology<br><b>Github:</b>samiaab1990</b>",
+    subtitle = "<br><br>2019 was Australia's warmest year in history, breaking previous records with a <b style='color:#F29D80'>1.52 째C increase</b> in mean <b>average</b> temperatures relative to the average temperatures recorded between 1961-1990 and a <b style='color:#EC9884'>2.09째C increase</b> in mean <b>maximum</b> temperatures relative to 1961-1990. The warmest months were <b style='color:#E69387'>January</b>,<b style='color:#DF8D8B'> March </b>and <b style='color:#D9888E'>December</b>. The map below shows the daily mean maximum temperatures for December 2019."
   )+
   geom_text_repel(data=australia_cities,aes(long,lat,label=city_name), size=5, color="#D8D0D0", family="Roboto")+
   scale_fill_viridis_c(option = "plasma", breaks=breaks, labels=labels) +
   coord_equal() +
   dark_theme_gray()+
-  theme(plot.title = element_markdown(size=80, family="Bebas Neue", color="#D8D0D0", hjust=.5),
-        plot.subtitle = element_textbox(size=15, family="Roboto", color="#D8D0D0", hjust=.5, width = unit(1.2, "npc")),
+  theme(plot.title = element_markdown(size=80, family="Bebas Neue", color="#D8D0D0", hjust=.5, lineheight=.1),
+        plot.subtitle = element_textbox(size=15, family="Roboto", color="#D8D0D0", hjust=.5, width = unit(1.1, "npc"), margin = margin(t=-1)),
         plot.caption = element_markdown(size=10, family="Roboto", color="#D8D0D0", hjust=1),
         plot.background = element_rect(fill = "#1B1B1B", color=NA),
         panel.background = element_blank(),
@@ -137,9 +137,10 @@ dec_avg<-ggplot()+
         axis.title=element_blank(),
         legend.position = "bottom",
         legend.justification="right")+
-  guides(fill=guide_colorbar(title="Temperature 캟/캜",ticks=FALSE, direction="horizontal", barwidth = 15,  barheight= 1,label.position="bottom", title.position = "top", title.vjust = 0,  title.hjust=.5, label.vjust=2.5, label.hjust=.8,label.theme=element_text(size=12, family='Roboto', color="#D8D0D0"), title.theme = element_text(size=12, family='Roboto', color='#D8D0D0') ))
+  guides(fill=guide_colorbar(title="Temperature 째F/째C",ticks=FALSE, direction="horizontal", barwidth = 15,  barheight= 1,label.position="bottom", title.position = "top", title.vjust = 0,  title.hjust=.5, label.vjust=2.5, label.hjust=.8,label.theme=element_text(size=12, family='Roboto', color="#D8D0D0"), title.theme = element_text(size=12, family='Roboto', color='#D8D0D0') ))
 
 save_plot(plot = dec_avg, filename = "temp.png",  base_width=10, base_height=10, units='in', dpi=100)
+
 
 
 # Rainfall Polygon map---------------------------------------------------------------------------
@@ -191,14 +192,14 @@ rain_avg_plot<-ggplot()+
   coord_sf() +
   dark_theme_gray()+
   labs(
-    title = paste0("<b>Australia Climate 2019</b><br>",make_title),
+    title = paste0("<b>Australia Climate 2019</b><br><span style='font-size:50px'>",make_title,"</style>"),
     caption = "<b>Source:</b> Australian Government Bureau of Meteorology<br><b>Github:</b>samiaab1990</b>",
     subtitle = 
-      "<br><br>Most parts of Australia were drier than average in 2019, recieving the <b style='color:#69EFC6'>least rainfall since 1900</b>.The total rainfall across the country was <b style='color:#6EE9C8'>277.6 millimeters</b>&mdash;<b style='color:#74E4CB'>40% below</b> the average rainfall between 1961-1990. The map below shows the rainfall totals for December 2019."
+      paste0("<br><br>Most parts of Australia were drier than average in 2019, recieving the <b style='color:#69EFC6'>least rainfall since 1900</b>.The total rainfall across the country was <b style='color:#6EE9C8'>277.6 millimeters</b>&mdash;<b style='color:#74E4CB'>40% below</b> the average rainfall between 1961-1990. The map below shows the rainfall totals for December 2019."),
   )+
   theme(
-    plot.title = element_markdown(size=80, family="Bebas Neue", color="#D8D0D0", hjust=.5),
-    plot.subtitle = element_textbox(size=15, family="Roboto", color="#D8D0D0", hjust=.5, margin=margin(0,0,-10,0), width=unit(1,"npc")),
+    plot.title = element_markdown(size=80, family="Bebas Neue", color="#D8D0D0", hjust=.5, lineheight = .1),
+    plot.subtitle = element_textbox(size=15, family="Roboto", color="#D8D0D0", hjust=.5, width=unit(1, "npc"),margin=margin(0,0,-10,0)),
     plot.caption = element_markdown(size=10, family="Roboto", color="#D8D0D0", hjust=1),
     plot.background = element_rect(fill = "#1B1B1B", color=NA),
     legend.text=element_text(color="#B3B3B3", size=12, lineheight = .3, family="Roboto"),
