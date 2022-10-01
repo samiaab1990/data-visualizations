@@ -5,7 +5,7 @@ A compilation of data visualizations projects made fully using the R programming
 # Gallery
 * [Animated Measles Map](#animated-measles-map)
 * [Artists Occupation and Race Graph](#acs-artists-graph)
-* [Australia Climate Maps](#australia-climate-maps)
+* [Australia Climate Maps and Graphs](#australia-climate-maps)
 * [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
 * [Legos Waffle Chart](#legos-waffle-chart)
@@ -26,6 +26,11 @@ Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytues
 <img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'>
 <img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
 </p> 
+
+<i> Charts using this dataset added in 2022</i>
+
+<b> Australia Ridgeline Plot</b>
+<img src='CopyOftemp_ggrid.png' alt='Australia ridgeline plot' width='70%' height='70%'>
 
 Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-07/readme.md)
 
