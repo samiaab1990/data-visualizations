@@ -4,3 +4,4 @@
 * Plots
 ![Temperature map](temp.png)
 ![Rainfall map](rain_avg_plot.png)
+![Ridgelines plot](temp_ggrid.png)
