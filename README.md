@@ -30,6 +30,7 @@ Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytues
 <i> Charts using this dataset added in 2022</i>
 
 <b> Australia Ridgeline Plot</b>
+
 <img src='CopyOftemp_ggrid.png' alt='Australia ridgeline plot' width='70%' height='70%'>
 
 Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-07/readme.md)
