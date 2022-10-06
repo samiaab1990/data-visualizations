@@ -8,6 +8,7 @@ A compilation of data visualizations projects made fully using the R programming
 * [Australia Climate Maps and Graphs](#australia-climate-maps)
 * [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
+* [Google Products Network Graph](#google-products-network-graph)
 * [Legos Waffle Chart](#legos-waffle-chart)
 * [W.E.B Dubois Graphs](#web-dubois-graphs)
 
@@ -44,6 +45,11 @@ Project: [Tidy Tuesday Week 2 2022](https://github.com/rfordatascience/tidytuesd
 <img src ='CopyOfchoc_plot.png' alt='Chocolate map' width='100%' height='100%'> 
 
 Project: [Tidy Tuesday Week 3 2022](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-18/readme.md)
+
+## Google Products Network Graph
+<img src ='CopyOfnetwork_graph.png' alt='Google Products Network Graph' width='100%' height='100%'> 
+
+Project: [Tidy Tuesday Week 40 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-10-04)
 
 ## Legos Waffle Chart
 <img src='CopyOflegos_test.png' alt='Legos' width='100%' height='100%'>
