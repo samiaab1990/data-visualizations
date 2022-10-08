@@ -10,6 +10,7 @@ A compilation of data visualizations projects made fully using the R programming
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
 * [Google Products Network Graph](#google-products-network-graph)
 * [Legos Waffle Chart](#legos-waffle-chart)
+* [SF Bay Area Rents Chart](#sf-bay-area-rents-chart)
 * [W.E.B Dubois Graphs](#web-dubois-graphs)
 
 ## Animated Measles Map
@@ -58,6 +59,11 @@ Project: [Tidy Tuesday Week 40 2022](https://github.com/rfordatascience/tidytues
 <img src='CopyOflegos_test.png' alt='Legos' width='100%' height='100%'>
 
 Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-06)
+
+## SF Bay Area Rents Chart
+<img src='CopyOfsf_rent.png' alt='Legos' width='100%' height='100%'>
+
+Project: [Tidy Tuesday Week 27 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-05)
 
 ## W.E.B Dubois Graphs
 <p align=center>
