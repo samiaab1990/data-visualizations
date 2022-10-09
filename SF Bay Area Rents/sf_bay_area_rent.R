@@ -66,7 +66,7 @@ theme(
   plot.background = element_rect(fill="#04001A"),
   plot.title = element_text(family="Bebas Neue", size=180, color="#CDCDCD", lineheight=.2, hjust=.5, vjust=-150),
   plot.subtitle = element_text(family="Montserrat", size=40, color="#CDCDCD", lineheight=.3, hjust=.5, vjust =-225),
-  plot.caption = element_textbox(family="Montserrat", size=30, color="#CDCDCD", lineheight=.2, width=unit(.5, units="npc"), hjust=0),
+  plot.caption = element_textbox(family="Montserrat", size=30, color="#CDCDCD", lineheight=.2, width=unit(.5, units="npc"), hjust=.5),
   panel.background = element_blank(),
   panel.grid.minor= element_blank(),
   panel.grid.major=element_blank(),
