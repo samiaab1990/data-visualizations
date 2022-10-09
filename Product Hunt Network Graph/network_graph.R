@@ -90,7 +90,7 @@ p<-ggraph(ggraph, layout = "sphere") +
        caption = "<b>Source:</b> components.one by way of Data is Plural<br><b>Github:</b>samiaab1990")+
   theme(
     plot.title = element_markdown(hjust=.5, size=150, color="#D4D4D4", family="Fjalla One"),
-    plot.subtitle = element_textbox(width = unit(.9, "npc"), size=70, family="Gemunu Libre", hjust=.5, color="#D4D4D4", lineheight=.1),
+    plot.subtitle = element_textbox(width = unit(.9, "npc"), size=60, family="Gemunu Libre", hjust=.5, color="#D4D4D4", lineheight=.1),
     plot.caption = element_markdown(size=30, color = "#D4D4D4", family="Gemunu Libre", hjust=1, lineheight=.1)
   )
 
