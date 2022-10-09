@@ -62,10 +62,11 @@ scale_x_continuous(breaks = c(2000,2009,2018),labels = c("2000","2009","2018"))+
 scale_y_continuous(limits=c(0,3300))+
 theme(
   legend.position = "none",
+  plot.margin = margin(t=-360),
   plot.background = element_rect(fill="#04001A"),
-  plot.title = element_text(family="Bebas Neue", size=180, color="#CDCDCD", lineheight=.1),
-  plot.subtitle = element_textbox(family="Montserrat", size=50, color="#CDCDCD", lineheight=.2, margin=margin(b=30), width = unit(.9, units="npc")),
-  plot.caption = element_textbox(family="Montserrat", size=30, color="#CDCDCD", lineheight=.2, width=unit(.5, units="npc")),
+  plot.title = element_text(family="Bebas Neue", size=180, color="#CDCDCD", lineheight=.2, hjust=.5, vjust=-150),
+  plot.subtitle = element_text(family="Montserrat", size=40, color="#CDCDCD", lineheight=.3, hjust=.5, vjust =-225),
+  plot.caption = element_textbox(family="Montserrat", size=30, color="#CDCDCD", lineheight=.2, width=unit(.5, units="npc"), hjust=0),
   panel.background = element_blank(),
   panel.grid.minor= element_blank(),
   panel.grid.major=element_blank(),
@@ -74,8 +75,8 @@ theme(
   axis.text = element_text(color="#6A6A6A", size=30, family="Montserrat"),
   strip.text = element_blank(),
 )+
-labs(title = "Bay Area Rental Prices Through The Years",
-     subtitle = "The SF Bay Area has been known to have one of the highest housing rental costs throughout the country. In 2018, the average monthly rent in San Francisco County was <b> 74% higher</b> than the monthly rent in 2000.The chart below shows the changes in average monthly rent (in dollars) throughout the region for housing units with 1 or less beds and 1 baths.",
+labs(title = "Bay Area\nRental Prices\nThrough The\nYears",
+     subtitle = "The SF Bay Area has been\n known to have one of\n the highest housing rental costs\n throughout the country. In 2018,\nthe average monthly rent in\nSan Francisco County was 74% higher\n than the monthly rent in 2000.\nThe graphs shows the changes\n in average monthly rent\n (in dollars) throughout the region for\n housing units with 1 or\nless beds and 1 baths.",
      caption = "<b>Source:</b> Pennington, Kate (2018). Bay Area Craigslist Rental Housing Posts, 2000-2018.<br><b>Github: </b>samiaab1990")
 
 ggsave(plot = p, filename = "sf_rent.png",  width=13, height=10, units='in', dpi=300)
