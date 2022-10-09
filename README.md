@@ -48,7 +48,7 @@ Project: [Tidy Tuesday Week 2 2022](https://github.com/rfordatascience/tidytuesd
 Project: [Tidy Tuesday Week 3 2022](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-01-18/readme.md)
 
 ## Google Products Network Graph
-<img src ='CopyOfnetwork_graph_bezier_sphere.png' alt='Google Products Network Graph' width='100%' height='100%'>
+<img src ='CopyOfnetwork_graph_bezier_sphere2.png' alt='Google Products Network Graph' width='100%' height='100%'>
 
 Project: [Tidy Tuesday Week 40 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-10-04)
 
