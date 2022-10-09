@@ -42,15 +42,6 @@ group_by(county, year) %>%
 summarise(avg_rent = mean(price, na.rm=TRUE))%>%
 filter(!is.na(county),county!="santa cruz")
 
-diff_pct<-rent_summary %>%
-group_by(county) %>% 
-mutate(rent_min = min(avg_rent, na.rm=TRUE),
-       rent_max = max(avg_rent, na.rm=TRUE),
-       diff_rent = (rent_max - rent_min)/(rent_min)*100)
-
-
-#joined_tables<-left_join(rent_summary,new_construction_summary)
-
 custom_grid<-sf_bay_area_counties_grid1 %>%
 mutate(name = str_trim(str_remove(tolower(name),"county|count"))) 
 
