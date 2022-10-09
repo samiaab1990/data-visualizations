@@ -79,14 +79,14 @@ google_pal<-c("#4285F4","#DB4437","#F4B400","#0F9D58")
 
 p<-ggraph(ggraph, layout = "sphere") + 
   geom_edge_diagonal(color="#474747", show.legend=FALSE, edge_alpha=0.1)+ 
-  geom_edge_diagonal(aes(filter=grepl(color_ids,id), color=id), show.legend=FALSE, width=1, edge_alpha=.5)+
+  geom_edge_diagonal(aes(filter=grepl(color_ids,id), color=id), show.legend=FALSE, edge_alpha=.8)+
   scale_edge_color_manual(values=google_pal)+
   geom_node_point(aes(size = name), fill = NA, color="#D4D4D4", alpha=.3, show.legend=FALSE)+
   theme_graph(background = "#1E1E1E")+
   geom_node_text(aes(label = name), size=9, color = "#D4D4D4", repel=TRUE, family="Gemunu Libre")+
   coord_fixed()+
   labs(title = "<span style = 'color:#4285F4'>G</span><span style='color:#DB4437'>o</span><span style='color:#F4B400'>o</span><span style='color:#4285F4'>g</span><span style='color:#0F9D58'>l</span><span style='color:#DB4437'>e</span> Product Tags",
-       subtitle = paste0("Tags associated with <b>",n," Google products</b> listed on Product Hunt, a social network site for sharing and discovering new products. Tags associated with the top <b>4 most upvoted products</b> are highlighted below."),
+       subtitle = paste0("Tags associated with <b>",n," Google products</b> listed on Product Hunt, a social network site for sharing and discovering new products. Tags associated with the <b>four most upvoted products</b> are highlighted below."),
        caption = "<b>Source:</b> components.one by way of Data is Plural<br><b>Github:</b>samiaab1990")+
   theme(
     plot.title = element_markdown(hjust=.5, size=150, color="#D4D4D4", family="Fjalla One"),
