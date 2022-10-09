@@ -56,11 +56,11 @@ mutate(name = str_trim(str_remove(tolower(name),"county|count")))
 
 
 p<-ggplot(data=rent_summary, aes(x=year, y=avg_rent))+
-geom_text(aes(x=2010, y=100, label=county, color=county), alpha=.04, size=25, fontface="bold", family="Bebas Neue")+
+geom_text(aes(x=2010, y=100, label=county, color=county), alpha=.07, size=25, fontface="bold", family="Bebas Neue")+
 geom_segment(aes(x=year, xend=year, y=0, yend=avg_rent-2, color=county), linetype="dotted")+
 scale_color_manual(values=pal)+
 geom_point(data = rent_summary, aes(x=year, y=avg_rent, color=county, size=avg_rent, alpha=avg_rent))+
-geom_textbox(data = rent_summary %>% filter(county=="san francisco"), aes(x=2005, y=2400, label="avg rent in 2018<br>in sf county<br> was ~$2,773 <br> a 74% increase<br> from rent in 2000"), family="Monserrat", size=10, color="#CDCDCD", lineheight=.3, fill=NA, box.color=NA)+
+geom_textbox(data = rent_summary %>% filter(county=="san francisco"), aes(x=2005, y=2400, label="avg rent in 2018<br>in sf county<br> was ~$2,773 <br> a <b>74% increase</b><br> from rent in 2000"), family="Monserrat", size=10, color="#CDCDCD", lineheight=.3, fill=NA, box.color=NA)+
 geom_textbox(data = rent_summary %>% filter(county=="contra costa"), aes(x=2005, y=2400, label="avg rent in<br>contra costa county<br> was ~$1,904 <br> in 2017, a <b>158% increase</b><br> from rents in 2000"), family="Monserrat", size=10, color="#CDCDCD", lineheight=.3, fill=NA, box.color=NA)+
 geom_curve(data = rent_summary %>% filter(county=="san francisco"), aes(x=2005, y=2000, xend = 2018, yend = 2773),
     arrow = arrow(length = unit(0.03, "npc"), type="closed"), color="#CDCDCD", linetype="dotted")+
