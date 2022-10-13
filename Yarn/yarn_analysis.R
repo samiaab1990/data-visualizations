@@ -33,14 +33,12 @@ top_20_popular_yarn<-yarn %>%
 group_by(yarn_company_name) %>%
 summarise(counts = sum(rating_count, na.rm=TRUE)) %>%
 arrange(desc(counts)) %>%
-slice(1:20) %>%
-mutate(yarn_company_name = case_when(str_detect(yarn_company_name,"Cascade")~ "Cascade Yarns",TRUE ~ yarn_company_name))
-
+slice(1:20)
 
 ## Filter yarn dataset on 20 most popular yarns (to be used for plot2) 
 top_20_popular_yarn_data<-yarn %>%
-  mutate(yarn_company_name = case_when(str_detect(yarn_company_name,"Cascade")~ "Cascade Yarns",TRUE ~ yarn_company_name)) %>% 
-  filter(yarn_company_name %in% (top_20_popular_yarn %>% pull(yarn_company_name))) 
+  filter(yarn_company_name %in% (top_20_popular_yarn %>% pull(yarn_company_name))) %>%
+  merge(top_20_popular_yarn)
   
 
 ## Groupings by yarn company and yarn weight
@@ -65,11 +63,29 @@ pull(name)
 highest_avg_rating<-yarn_weight %>% ungroup() %>% filter(avg_rating == max(avg_rating, na.rm=TRUE))
 
 
-p<-ggplot(data = yarn_weight, aes(x=reorder(label,yarn_weight_ply), y=reorder(yarn_company_name,counts), size = avg_rating, color = avg_rating))+
+## factoring, manually
+factor_yarn_weights<-c("<b style = 'font-size:70px'>Thread</b><br><b>Ply: </b>Unavailable<br><b>Knit Gauge: </b>Unavailable",
+                       "<b style = 'font-size:70px'>Lace</b><br><b>Ply: </b>2<br><b>Knit Gauge: </b>32-34", 
+                       "<b style = 'font-size:70px'>Light Fingering</b><br><b>Ply: </b>3<br><b>Knit Gauge: </b>32",
+                       "<b style = 'font-size:70px'>Fingering</b><br><b>Ply: </b>4<br><b>Knit Gauge: </b>28",
+                       "<b style = 'font-size:70px'>Sport</b><br><b>Ply: </b>5<br><b>Knit Gauge: </b>24-26",
+                       "<b style = 'font-size:70px'>DK</b><br><b>Ply: </b>8<br><b>Knit Gauge: </b>22",
+                       "<b style = 'font-size:70px'>DK / Sport</b><br><b>Ply: </b>Unavailable<br><b>Knit Gauge: </b>Unavailable",
+                       "<b style = 'font-size:70px'>Worsted</b><br><b>Ply: </b>10<br><b>Knit Gauge: </b>20",
+                       "<b style = 'font-size:70px'>Aran</b><br><b>Ply: </b>10<br><b>Knit Gauge: </b>18",
+                       "<b style = 'font-size:70px'>Super Bulky</b><br><b>Ply: </b>Unavailable<br><b>Knit Gauge: </b>7-12",
+                       "<b style = 'font-size:70px'>Jumbo</b><br><b>Ply: </b>Unavailable<br><b>Knit Gauge: </b>0-6")             
+
+
+
+yarn_weight<-yarn_weight %>%
+mutate(label = fct_relevel(label,factor_yarn_weights))
+
+p<-ggplot(data = yarn_weight, aes(x=label, y=reorder(yarn_company_name,counts), size = avg_rating, color = avg_rating))+
 geom_point()+
 scale_y_discrete(position="right")+
-geom_text(data = (yarn_weight %>% filter(avg_rating == highest_avg_rating$avg_rating)), aes(x=9.5, y=16, label="Lang Yarn's DK / Sport\nweighted yarn had\n the highest average\n rating"), color="#484848", lineheight=.3, size=12, family="Rajdhani", fontface="bold")+
-geom_curve(data = (yarn_weight %>% filter(avg_rating == highest_avg_rating$avg_rating)), aes(x=9.5, y=16, xend=9, yend=4), arrow = arrow(length=unit(.02,"npc"), type="closed"), color="#484848", linetype="dotted", size=.5)+
+geom_text(data = (yarn_weight %>% filter(avg_rating == highest_avg_rating$avg_rating)), aes(x=7, y=16, label="Lang Yarn's DK / Sport\nweighted yarn had\n the highest average\n rating"), color="#484848", lineheight=.3, size=12, family="Rajdhani", fontface="bold")+
+geom_curve(data = (yarn_weight %>% filter(avg_rating == highest_avg_rating$avg_rating)), aes(x=6.8, y=16, xend=7, yend=4), arrow = arrow(length=unit(.02,"npc"), type="closed"), color="#484848", linetype="dotted", size=.5)+
 labs(title = "Average Rating of Brands\n by Yarn Weight Type")+
 theme(
   plot.background = element_rect(fill = "#FFFCF2"),
@@ -96,7 +112,7 @@ jitter_pal<-c("#0F3249", "#19364C", "#223A4F", "#2C3F52", "#354355", "#3F4758", 
 q<-ggplot(top_20_popular_yarn_data, aes(x=reorder(yarn_company_name,counts), y=rating_count, color=reorder(yarn_company_name, counts)))+
   geom_jitter()+
   scale_x_discrete(position="bottom")+
-  geom_text(data = (top_20_popular_yarn_data %>% filter(rating_count==max(rating_count,na.rm=TRUE))), aes(x=16, y=15000, label=paste0(max_rating,"yarns\nhad the greatest number \nof ratings on Ravelry")), size=12, face="bold", color="#484848", lineheight=.2, family="Rajdhani", fontface="bold")+
+  geom_text(data = (top_20_popular_yarn_data %>% filter(rating_count==max(rating_count,na.rm=TRUE))), aes(x=16, y=15000, label=paste0(max_rating,"yarns\nhad the greatest number \nof ratings on Ravelry")), size=12, fontface="bold", color="#484848", lineheight=.2, family="Rajdhani")+
   geom_curve(data = (top_20_popular_yarn_data %>% filter(rating_count==max(rating_count,na.rm=TRUE))), aes(x=15, xend=19, y=15000, yend=rating_count-2), arrow = arrow(length = unit(0.02, "npc"), type="closed"), color="#484848", linetype="dotted")+
   scale_color_manual(values = jitter_pal)+
   labs(title="Number of Ratings by Brand")+
