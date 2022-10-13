@@ -74,4 +74,4 @@ Project: [Tidy Tuesday Week 8 2021](https://github.com/ajstarks/dubois-data-port
 ## Yarn Ratings
 <img src='CopyOfyarn.png' alt='Yarn' width='100%' height='100%'>
 
-Project: [Tidy Tuesday Week 41 2022)(https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-10-11)
+Project: [Tidy Tuesday Week 41 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-10-11)
