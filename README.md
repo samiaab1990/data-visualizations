@@ -12,6 +12,7 @@ A compilation of data visualizations projects made fully using the R programming
 * [Legos Waffle Chart](#legos-waffle-chart)
 * [SF Bay Area Rents Chart](#sf-bay-area-rents-chart)
 * [W.E.B Dubois Graphs](#web-dubois-graphs)
+* [Yarn Ratings](#yarn-ratings)
 
 ## Animated Measles Map
 ![Animated Measles Map](CopyOfmeaslesmap.gif)
@@ -24,10 +25,8 @@ Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytues
 Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-27)
 
 ## Australia Climate Maps 
-<p align='center'>
-<img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'>
-<img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
-</p> 
+
+<img src='CopyOftemp.png' alt='Australia Temp Map' width='50%' height='50%'><img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='50%' height='50%'>
 
 <i> Charts using this dataset added in 2022</i>
 
@@ -63,9 +62,13 @@ Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytues
 Project: [Tidy Tuesday Week 27 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-05)
 
 ## W.E.B Dubois Graphs
-<p align=center>
-<img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
-<img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'>
-</p>
+
+<img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'><img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
+
 
 Project: [Tidy Tuesday Week 8 2021](https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge)
+
+## Yarn Ratings
+<img src='CopyOfyarn.png' alt='Yarn' width='100%' height='100%'>
+
+Project: [Tidy Tuesday Week 41 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-10-11)
