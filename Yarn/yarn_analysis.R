@@ -73,6 +73,7 @@ factor_yarn_weights<-c("<b style = 'font-size:70px'>Thread</b><br><b>Ply: </b>Un
                        "<b style = 'font-size:70px'>DK / Sport</b><br><b>Ply: </b>Unavailable<br><b>Knit Gauge: </b>Unavailable",
                        "<b style = 'font-size:70px'>Worsted</b><br><b>Ply: </b>10<br><b>Knit Gauge: </b>20",
                        "<b style = 'font-size:70px'>Aran</b><br><b>Ply: </b>10<br><b>Knit Gauge: </b>18",
+                       "<b style = 'font-size:70px'>Bulky</b><br><b>Ply: </b>12<br><b>Knit Gauge: </b>14-15",  
                        "<b style = 'font-size:70px'>Super Bulky</b><br><b>Ply: </b>Unavailable<br><b>Knit Gauge: </b>7-12",
                        "<b style = 'font-size:70px'>Jumbo</b><br><b>Ply: </b>Unavailable<br><b>Knit Gauge: </b>0-6")             
 
