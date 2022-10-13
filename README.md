@@ -25,10 +25,8 @@ Project: [Tidy Tuesday Week 50 2019](https://github.com/rfordatascience/tidytues
 Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-27)
 
 ## Australia Climate Maps 
-<p align='center'>
-<img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'>
-<img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
-</p> 
+
+<img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'><img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
 
 <i> Charts using this dataset added in 2022</i>
 
