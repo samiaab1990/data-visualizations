@@ -26,7 +26,7 @@ Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytues
 
 ## Australia Climate Maps 
 
-<img src='CopyOftemp.png' alt='Australia Temp Map' width='70%' height='70%'><img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='70%' height='70%'>
+<img src='CopyOftemp.png' alt='Australia Temp Map' width='50%' height='50%'><img src='CopyOfrain_avg_plot.png' alt='Australia Rainfall Map' width='50%' height='50%'>
 
 <i> Charts using this dataset added in 2022</i>
 
