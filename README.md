@@ -50,7 +50,7 @@ Project: [Tidy Tuesday Week 3 2022](https://github.com/rfordatascience/tidytuesd
 
 <b> With all products</b>
 
-<img src='CopyOfnetwork_graph_bezier2.png' alt='Google Products Network Graph' width='100%' height='100%>
+<img src='CopyOfnetwork_graph_bezier2.png' alt='Google Products Network Graph' width='100%' height='100%'>
 
 <b> Simplified</b>
                                                                                                     
