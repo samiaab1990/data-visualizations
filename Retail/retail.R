@@ -1,6 +1,5 @@
 library(dplyr)
 library(ggplot2)
-library(randomcoloR)
 library(lubridate)
 library(tibble)
 library(ggnewscale)
@@ -8,8 +7,10 @@ library(cowplot)
 library(statebins)
 library(stringr)
 library(ggtext)
+library(ggchicklet)
 
 sysfonts::font_add_google("Archivo Narrow","Archivo Narrow", bold.wt=600)
+
 # font for the subtitle, caption, etc.
 sysfonts::font_add_google("Roboto Condensed","Roboto Condensed", bold.wt=700)
 sysfonts::font_add(family = "Font Awesome 5 Brands Regular", regular= "~/GitHub/fonts/Font Awesome 5 Brands-Regular-400.otf")
@@ -101,7 +102,7 @@ q<-ggplot(data=dat,aes(x=x,y=y))+
    theme_void()
 
 r<-ggplot(data=dat, aes(x=x,y=y))+
-   geom_textbox(aes(label="Retail sales in the United States, while initially increasing modestly across most sectors at the beginning of 2020 relative to the same time in 2019, underwent drastic changes after COVID-19 was declared a national emergency in March, though changes varied depending on sector.<b>Building materials and supplies</b> and <b> food and beverage </b> retailers overall had higher sales in 2020 compared to 2019, while<b> clothing</b>, <b>electronics and appliances</b> and <b>gasoline stations </b> had considerably lower sales. The following graph shows the <b>percent year-over-year change</b> during each month in 2020 across 11 sectors. Data on retail sales comes from the US Census Bureau's Monthly State Retail Sales data product that gathers data from survey, administrative data, and third-party data. <b>Note:</b> data collection for the MSRS may be limited in quality due to
+   geom_textbox(aes(label="Retail sales in the United States, while initially increasing modestly across most sectors at the beginning of 2020 relative to the same time in 2019, underwent drastic changes after COVID-19 was declared a national emergency in March, though changes varied depending on sector. <b>Building materials and supplies</b> and<b> food and beverage</b> retailers overall had higher sales in 2020 compared to 2019, while<b> clothing</b>, <b>electronics and appliances</b> and <b>gasoline stations </b> had considerably lower sales. The following graph shows the <b>percent year-over-year change</b> during each month in 2020 across 11 sectors. Data on retail sales comes from the US Census Bureau's Monthly State Retail Sales data product that gathers data from survey, administrative data, and third-party data. <b>Note:</b> data collection for the MSRS may be limited in quality due to
                     collection during the pandemic, standard errors (represented by <span style='color:#FEFEFE'>----</span> dashed lines on the bar graph) are included to show the
                     possible interval of the true year-over-year estimates."), width=unit(.5,"npc"), family="Roboto Condensed", box.colour=NA, color="#D1D1D1", fill=NA, hjust=.5)+
    theme_void()
