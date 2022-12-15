@@ -10,7 +10,7 @@ A compilation of data visualizations projects made using the R programming langu
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
 * [Google Products Network Graph](#google-products-network-graph)
 * [Legos Waffle Chart](#legos-waffle-chart)
-* [Retail Sales)(#retail sales)
+* [Retail Sales](#retail sales)
 * [SF Bay Area Rents Chart](#sf-bay-area-rents-chart)
 * [W.E.B Dubois Graphs](#web-dubois-graphs)
 * [Yarn Ratings](#yarn-ratings)
