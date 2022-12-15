@@ -9,6 +9,7 @@ library(stringr)
 library(ggtext)
 library(ggchicklet)
 
+# font for the title 
 sysfonts::font_add_google("Archivo Narrow","Archivo Narrow", bold.wt=600)
 
 # font for the subtitle, caption, etc.
@@ -33,17 +34,20 @@ tuesdata <- tidytuesdayR::tt_load(2022, week = 50)
 state_retail <- tuesdata$state_retail
 coverage_codes <- tuesdata$coverage_codes
 
-# Or read in the data manually
-
-state_retail <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/state_retail.csv',  col_types = "cciciiccc")
-coverage_codes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/coverage_codes.csv')
-
+# get the US retail data for all subsectors (remove total)
+# filter:
+# total US, year 2020
+# mutate:
+## change numeric values to numeric
+## comebine year and month
+## get month as a label 
 us_retail<-state_retail %>%
 filter(state_abbr=="USA", subsector!="total", year==2020) %>%
 mutate(ym = as.Date(paste0(year,"-",month,"-01")),
        across(c(change_yoy,change_yoy_se),as.numeric),
        month_lab = month(ym, label=TRUE, abbr=TRUE))
 
+# for the state retail statebin chart
 state_retail_mod<-
   state_retail %>%
   filter(state_abbr!="USA", year==2020, subsector!="total") %>%
@@ -51,6 +55,7 @@ state_retail_mod<-
   group_by(state_abbr, subsector) %>%
   summarise(change_yoy=mean(change_yoy,na.rm=TRUE))
 
+# to get the US mean averages
 us_total_change<-us_retail %>%
                 group_by(subsector) %>%
                 summarise(change_yoy=mean(change_yoy,na.rm=TRUE))
@@ -60,7 +65,9 @@ us_total_change<-us_retail %>%
 custom_pal<-c("#1a1423","#372549","#774c60","#b75d69","#eacdc2",
               "#000000","#2f4550","#586f7c","#b8dbd9","#f4f4f9","#d6d3f0")
 
+# main plot 
 p<-ggplot(data = us_retail, aes(x = 0, y=change_yoy))+
+
 # solution from https://stackoverflow.com/questions/9847559/conditionally-change-panel-background-with-facet-grid
 geom_rect(aes(xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf, fill=ym), color=NA)+
 scale_fill_gradient(low="#00424E",high="#001D22")+
@@ -95,22 +102,28 @@ theme(
 coord_cartesian(clip="off")
 
 
+# make a random dataset-will be used to generate annotations
+# generating some annotations as separate plots to use ggtext
 dat<-tibble(x=15,y=5)
 
+# title 
 q<-ggplot(data=dat,aes(x=x,y=y))+
    geom_text(aes(label="US Retail Sales in 2020"), size=20, family="Archivo Narrow", fontface="bold", color="#D1D1D1")+
    theme_void()
 
+# subtitle 
 r<-ggplot(data=dat, aes(x=x,y=y))+
    geom_textbox(aes(label="Retail sales in the United States, while initially increasing modestly across most sectors at the beginning of 2020 relative to the same time in 2019, underwent drastic changes after COVID-19 was declared a national emergency in March, though changes varied depending on sector. <b>Building materials and supplies</b> and<b> food and beverage</b> retailers overall had higher sales in 2020 compared to 2019, while<b> clothing</b>, <b>electronics and appliances</b> and <b>gasoline stations </b> had considerably lower sales. The following graph shows the <b>percent year-over-year change</b> during each month in 2020 across 11 sectors. Data on retail sales comes from the US Census Bureau's Monthly State Retail Sales data product that gathers data from survey, administrative data, and third-party data. <b>Note:</b> data collection for the MSRS may be limited in quality due to
                     collection during the pandemic, standard errors (represented by <span style='color:#FEFEFE'>----</span> dashed lines on the bar graph) are included to show the
                     possible interval of the true year-over-year estimates."), width=unit(.5,"npc"), family="Roboto Condensed", box.colour=NA, color="#D1D1D1", fill=NA, hjust=.5)+
    theme_void()
 
+# annotation/title for maps 
 s<-ggplot(data=dat, aes(x=x,y=y))+
   geom_textbox(aes(label=paste0("Retail sales for building materials and supplies dealers had a <b>",round(us_total_change %>% filter(str_detect(subsector,"Building")) %>% pull(change_yoy)),"%</b> mean year-over-year percent change in 2020 compared to 2019 whereas clothing retail sales had a mean change of <b>", round(us_total_change %>% filter(str_detect(subsector,"Clothing")) %>% pull(change_yoy)),"%</b> compared to 2019.")), width=unit(.4,"npc"), family="Roboto Condensed", box.colour=NA, color="#D1D1D1", fill=NA, hjust=.5)+
   theme_void()
 
+# arrows 
 arrow_1<-ggplot(data=dat, aes(x=x,y=y))+
          geom_curve(aes(x = x, xend = x+.5, y = y, yend=y+.5), curvature=-.5, arrow=arrow(length=unit(.05,"npc"), type="closed"), color="#D1D1D1")+
          ylim(5,6)+
@@ -129,10 +142,12 @@ arrow_3<-ggplot(data=dat, aes(x=x,y=y))+
   xlim(15,16)+
   theme_void()
 
+# caption 
 caption <- ggplot(data=dat, aes(x=x,y=y))+
   geom_textbox(aes(label="<b>Source</b>: US Census Bureau <b>Data Viz By</b>: Samia B <span style='font-family: \"Font Awesome 5 Brands Regular\"'>&#xf09b;</span> samiaab1990"), width=unit(.7,"npc"), family="Roboto Condensed", box.colour=NA, color="#D1D1D1", fill=NA, hjust=.5, size=3.5)+
   theme_void()
 
+# statebins map 
 t<-ggplot(data=state_retail_mod %>% filter(str_detect(subsector,"Building|Clothing")), aes(state=state_abbr, fill=change_yoy))+
 geom_statebins(border_col="#357783", border_size=.5, family="Roboto Condensed", light_lbl="#D1D1D1", lbl_size=3, fontface="bold")+
 coord_equal()+
@@ -149,6 +164,8 @@ theme(
 )+
 guides(fill = guide_colorbar(ticks=FALSE, direction="horizontal", title.position="top", title="Change Year-over-Year(%)", barwidth=10, barheight=.5, title.hjust=.5, label.hjust=.5))
 
+
+# use cowplot to put together and add additional annotations
 
 annotate_1<-paste0("Clothing and clothing accessories\n retail sales dropped ",round(us_retail %>% filter(change_yoy==min(change_yoy)) %>% pull(change_yoy)),"% in April 2020,\n the most out of any sector in 2020.")
 annotate_2<-"Building materials and supplies\n dealers and food and beverage were\n the only sectors that did not have a negative \nyear-over-year change in 2020."
@@ -167,4 +184,6 @@ u<-ggdraw() +
   draw_label(annotate_2, x=.32, y=.65, size=10, fontfamily="Roboto Condensed", color="#D1D1D1")
 
 ggsave(plot = u, filename = "retail.png",  width=15, height=10, units='in', dpi=300, bg="#00424E")
+
+## comment out-to test statebins
 #ggsave(plot = s, filename = "statebin.png",  width=15, height=10, units='in', dpi=300, bg="transparent")
