@@ -34,20 +34,22 @@ tuesdata <- tidytuesdayR::tt_load(2022, week = 50)
 state_retail <- tuesdata$state_retail
 coverage_codes <- tuesdata$coverage_codes
 
-# get the US retail data for all subsectors (remove total)
-# filter:
-# total US, year 2020
-# mutate:
-## change numeric values to numeric
-## comebine year and month
-## get month as a label 
+# get the US retail data for all subsectors 
+## filter:
+### total US, year 2020
+
+## mutate:
+### change numeric values to numeric
+### comebine year and month
+### get month as a label 
+
 us_retail<-state_retail %>%
 filter(state_abbr=="USA", subsector!="total", year==2020) %>%
 mutate(ym = as.Date(paste0(year,"-",month,"-01")),
        across(c(change_yoy,change_yoy_se),as.numeric),
        month_lab = month(ym, label=TRUE, abbr=TRUE))
 
-# for the state retail statebin chart
+# generate a summary for states, to use for the statebin map 
 state_retail_mod<-
   state_retail %>%
   filter(state_abbr!="USA", year==2020, subsector!="total") %>%
@@ -103,27 +105,28 @@ coord_cartesian(clip="off")
 
 
 # make a random dataset-will be used to generate annotations
-# generating some annotations as separate plots to use ggtext
+
+## generating some annotations as separate plots to use ggtext
 dat<-tibble(x=15,y=5)
 
-# title 
+## title 
 q<-ggplot(data=dat,aes(x=x,y=y))+
    geom_text(aes(label="US Retail Sales in 2020"), size=20, family="Archivo Narrow", fontface="bold", color="#D1D1D1")+
    theme_void()
 
-# subtitle 
+## subtitle 
 r<-ggplot(data=dat, aes(x=x,y=y))+
    geom_textbox(aes(label="Retail sales in the United States, while initially increasing modestly across most sectors at the beginning of 2020 relative to the same time in 2019, underwent drastic changes after COVID-19 was declared a national emergency in March, though changes varied depending on sector. <b>Building materials and supplies</b> and<b> food and beverage</b> retailers overall had higher sales in 2020 compared to 2019, while<b> clothing</b>, <b>electronics and appliances</b> and <b>gasoline stations </b> had considerably lower sales. The following graph shows the <b>percent year-over-year change</b> during each month in 2020 across 11 sectors. Data on retail sales comes from the US Census Bureau's Monthly State Retail Sales data product that gathers data from survey, administrative data, and third-party data. <b>Note:</b> data collection for the MSRS may be limited in quality due to
                     collection during the pandemic, standard errors (represented by <span style='color:#FEFEFE'>----</span> dashed lines on the bar graph) are included to show the
                     possible interval of the true year-over-year estimates."), width=unit(.5,"npc"), family="Roboto Condensed", box.colour=NA, color="#D1D1D1", fill=NA, hjust=.5)+
    theme_void()
 
-# annotation/title for maps 
+## annotation/title for maps 
 s<-ggplot(data=dat, aes(x=x,y=y))+
   geom_textbox(aes(label=paste0("Retail sales for building materials and supplies dealers had a <b>",round(us_total_change %>% filter(str_detect(subsector,"Building")) %>% pull(change_yoy)),"%</b> mean year-over-year percent change in 2020 compared to 2019 whereas clothing retail sales had a mean change of <b>", round(us_total_change %>% filter(str_detect(subsector,"Clothing")) %>% pull(change_yoy)),"%</b> compared to 2019.")), width=unit(.4,"npc"), family="Roboto Condensed", box.colour=NA, color="#D1D1D1", fill=NA, hjust=.5)+
   theme_void()
 
-# arrows 
+## arrows 
 arrow_1<-ggplot(data=dat, aes(x=x,y=y))+
          geom_curve(aes(x = x, xend = x+.5, y = y, yend=y+.5), curvature=-.5, arrow=arrow(length=unit(.05,"npc"), type="closed"), color="#D1D1D1")+
          ylim(5,6)+
@@ -142,10 +145,11 @@ arrow_3<-ggplot(data=dat, aes(x=x,y=y))+
   xlim(15,16)+
   theme_void()
 
-# caption 
+## caption 
 caption <- ggplot(data=dat, aes(x=x,y=y))+
   geom_textbox(aes(label="<b>Source</b>: US Census Bureau <b>Data Viz By</b>: Samia B <span style='font-family: \"Font Awesome 5 Brands Regular\"'>&#xf09b;</span> samiaab1990"), width=unit(.7,"npc"), family="Roboto Condensed", box.colour=NA, color="#D1D1D1", fill=NA, hjust=.5, size=3.5)+
   theme_void()
+
 
 # statebins map 
 t<-ggplot(data=state_retail_mod %>% filter(str_detect(subsector,"Building|Clothing")), aes(state=state_abbr, fill=change_yoy))+
