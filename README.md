@@ -67,6 +67,7 @@ Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytues
 
 ## Open Street Maps
 <img src='CopyOffull_plot.png' alt='osm' width='100%' height='100%'>
+
 ## Retail Sales
 <img src='CopyOfretail.png' alt='Retail Sales' width='100%' height='100%'>
 
@@ -80,7 +81,6 @@ Project: [Tidy Tuesday Week 27 2022](https://github.com/rfordatascience/tidytues
 ## W.E.B Dubois Graphs
 
 <img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'><img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
-
 
 Project: [Tidy Tuesday Week 8 2021](https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge)
 
