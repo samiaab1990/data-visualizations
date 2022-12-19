@@ -10,6 +10,7 @@ A compilation of data visualizations projects made using the R programming langu
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
 * [Google Products Network Graph](#google-products-network-graph)
 * [Legos Waffle Chart](#legos-waffle-chart)
+* [OpenStreetMaps](#openstreetmaps)
 * [Retail Sales](#retail-sales)
 * [SF Bay Area Rents Chart](#sf-bay-area-rents-chart)
 * [W.E.B Dubois Graphs](#web-dubois-graphs)
@@ -64,6 +65,9 @@ Project: [Tidy Tuesday Week 40 2022](https://github.com/rfordatascience/tidytues
 
 Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-06)
 
+## Open Street Maps
+<img src='CopyOffull_plot.png' alt='osm' width='120%' height='120%'>
+
 ## Retail Sales
 <img src='CopyOfretail.png' alt='Retail Sales' width='100%' height='100%'>
 
@@ -77,7 +81,6 @@ Project: [Tidy Tuesday Week 27 2022](https://github.com/rfordatascience/tidytues
 ## W.E.B Dubois Graphs
 
 <img src='CopyOfGA_pop_plot.png' alt='GA population' width='50%' height='50%'><img src='CopyOfFreed_slaves_plot.png' alt='Freed slaves' width='50%' height='50%'>
-
 
 Project: [Tidy Tuesday Week 8 2021](https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge)
 
