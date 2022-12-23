@@ -13,6 +13,7 @@ A compilation of data visualizations projects made using the R programming langu
 * [OpenStreetMaps](#openstreetmaps)
 * [Retail Sales](#retail-sales)
 * [SF Bay Area Rents Chart](#sf-bay-area-rents-chart)
+* [Weather Forecast Accuracy](#weather-forecast-accuracy)
 * [W.E.B Dubois Graphs](#web-dubois-graphs)
 * [Yarn Ratings](#yarn-ratings)
 
@@ -79,6 +80,11 @@ Project: [Tidy Tuesday Week 50 2022](https://github.com/rfordatascience/tidytues
 <img src='CopyOfsf_rent.png' alt='Legos' width='100%' height='100%'>
 
 Project: [Tidy Tuesday Week 27 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-05)
+
+## Weather Forecast Accuracy
+<img src='CopyOfweather.png alt='Weather Accuracy' width='100%' height='100%'>
+
+Project: [Tidy Tuesday Week 51 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-12-20)
 
 ## W.E.B Dubois Graphs
 
