@@ -71,6 +71,8 @@ Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytues
 
 <img src='CopyOffull_plot_alt_color.png' alt='osm' width='100%' height='100%'>
 
+<img src='CopyOfmanhattan_neighborhoods.png' alt='osm' width='100%' height='100%'>
+
 ## Retail Sales
 <img src='CopyOfretail.png' alt='Retail Sales' width='100%' height='100%'>
 
