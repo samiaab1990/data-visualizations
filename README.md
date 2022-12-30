@@ -66,7 +66,7 @@ Project: [Tidy Tuesday Week 40 2022](https://github.com/rfordatascience/tidytues
 
 Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-06)
 
-## OpenStreetMaps
+## OpenStreetMaps 
 <img src='CopyOffull_plot_using_bbox.png' alt='osm' width='100%' height='100%'>
 
 <img src='CopyOffull_plot_alt_color.png' alt='osm' width='100%' height='100%'>
