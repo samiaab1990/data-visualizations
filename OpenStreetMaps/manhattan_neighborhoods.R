@@ -207,14 +207,14 @@ title<-ggplot()+
   coord_fixed(clip="off")
 
 caption<-ggplot()+
-  geom_textbox(aes(x=0,y=0,label="Street views of 39 neighborhoods in the borough of Manhattan, New York City.<br>OpenStreetMap® Contributors, NYC Open Data <b>Viz By:</b> Samia B (<span style='font-family: \"Font Awesome 5 Brands Regular\"'>&#xf09b;</span> samiaab1990)"), width=unit(1,"npc"), family="Roboto Condensed", color="#6B6B6B", fill=NA, box.color=NA, size=7)+
+  geom_textbox(aes(x=0,y=0,label="<span style='font-size:40px'>Street views of 39 neighborhoods in the borough of Manhattan, New York City.</span><br><span style='font-size:20px'><b>Source:</b> OpenStreetMap® Contributors, NYC Open Data <b>Viz By:</b> Samia B (<span style='font-family: \"Font Awesome 5 Brands Regular\"'>&#xf09b;</span> samiaab1990)</span>"), width=unit(1,"npc"), family="Roboto Condensed", color="#6B6B6B", fill=NA, box.color=NA)+
   theme_void()+
   coord_fixed(clip="off")
 
 p<-ggdraw()+
    draw_plot(title, x=.05, y=.43)+
    draw_plot(caption, x=.05,y=.39)+
-   draw_plot(manhattan_street_map, width=.2, height=.2, x=.8, y=.8)+
+   draw_plot(manhattan_street_map, width=.2, height=.2, x=.7, y=.8)+
    draw_plot(neighborhood_grid,  height=.8, y=.01)
    
 
