@@ -40,6 +40,10 @@ Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytues
 
 Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-07/readme.md)
 
+## Basketball Analytics
+
+### Lebron James: A Making of NBA History
+
 ## Bees Colony Loss Graph
 ![Bees graph](CopyOfbees_with_cairo.png) 
 
