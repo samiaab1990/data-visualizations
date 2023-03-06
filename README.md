@@ -6,6 +6,7 @@ A compilation of data visualizations projects made using the R programming langu
 * [Animated Measles Map](#animated-measles-map)
 * [Artists Occupation and Race Graph](#acs-artists-graph)
 * [Australia Climate Maps and Graphs](#australia-climate-maps)
+* [Basketball Analytics](#basketball-analytics)
 * [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
 * [Google Products Network Graph](#google-products-network-graph)
