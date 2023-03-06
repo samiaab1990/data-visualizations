@@ -43,6 +43,7 @@ Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesd
 ## Basketball Analytics
 
 ### Lebron James: A Making of NBA History
+<img src='/Basketball/Lebron/plots/lebron_gif.gif' alt='Lebron Shot Chart' width='50%' height='50%'>
 
 ## Bees Colony Loss Graph
 ![Bees graph](CopyOfbees_with_cairo.png) 
