@@ -1,8 +1,19 @@
-# Lebron James, A Making of NBA History: A Basketball Analytics Project
+# Lebron James, Looking at A Making of NBA History with Basketball Analytics
+
+After Lebron James surpassed the NBA all-time scoring record, I created these series of data visualizations to look at different facets of his career so far. The first two visualizations are shot charts inspired largely by [Kirk Goldberry](https://twitter.com/kirkgoldsberry)- the firt one which is looking at field goal percent vs league average for each season in James' career. The size of the hexagon bins correspond to the frequency of shots taken from the location and the color corresponds to the percent difference.
 
 <p align = 'center'><img src='plots/lebron_gif.gif' alt='Lebron Shot Chart Through the Years' width='80%' height='80%'></p>
+
+The second data visualization is looking at all shots taken thus far in James' career. The teal color corresponds to made shots whereas the orange color corresponds to missed shots. The record-breaking shot is starred in yellow.
+
 <p align = 'center'><img src='plots/lebron_shot_chart.png' alt='Lebron Shot Chart' width='80%' height='80%'></p>
+
+These next two charts are looking at career summaries-the first chart looking at the number of points scored broken down by the teams/seasons James' has played in as well as the points coming from type of shot (free throws, 2 and 3 point field goals)...
+
 <p align = 'center'><img src='plots/lebron_points_summary.png' alt='Lebron Points Summary' width='80%' height='80%'></p>
+
+And this chart here looks at shooting efficiency using the true shooting percentage (TSP) formula. The final plot is looking at field goal vs league percent aggregated by season.
+
 <p align = 'center'><img src='plots/lebron_fg_stats_summary.png' alt='Lebron FG Stats Summary' width='80%' height='80%'></p>
 
 <b>Credits:</b> The heavy lifting of this analysis was possible largely thanks to the [ballR](https://github.com/toddwschneider/ballr) tool created by Todd Schneider (you can read more about it [here](https://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/)) and the [nba-api](https://github.com/swar/nba_api) Python library. 
