@@ -30,11 +30,8 @@
 ## Scripts for Viz
 
 - [Animated Shotchart](https://github.com/samiaab1990/Data-Visualizations/blob/main/Basketball/Lebron/lebron_shotchart_viz.R)
-
 - [All Shots Made Shotchart](https://github.com/samiaab1990/Data-Visualizations/blob/main/Basketball/Lebron/lebron_all_shots_viz.R)
-
 - [Points Summary Viz](https://github.com/samiaab1990/Data-Visualizations/blob/main/Basketball/Lebron/lebron_points_summary_viz.R)
-
 - [Efficiency Viz](https://github.com/samiaab1990/Data-Visualizations/blob/main/Basketball/Lebron/lebron_efficiency_summary.R)
 
 
