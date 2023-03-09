@@ -1,22 +1,31 @@
-# Lebron James, Looking at A Making of NBA History with Basketball Analytics
+# Lebron James, Looking at A Making of NBA History 
 
-After Lebron James surpassed the NBA all-time scoring record, I created these series of data visualizations to look at various facets of his career so far. The first two visualizations are shot charts inspired largely by [Kirk Goldberry](https://twitter.com/kirkgoldsberry)- the first one which is looking at field goal percent vs league average for each season in Lebron's career. The size of the hexagon bins correspond to the frequency of shots taken from the location and the color corresponds to the percent difference.
+After Lebron James surpassed the NBA all-time scoring record, I created these series of visualizations to look at various facets of his career so far leading up the record. The first two are shot charts, inspired largely by Kirk Goldberry's basketball visualization style - the first, which is looking at field goal percent vs league average for each season in Lebron's career. The size of the hexagon bins correspond to the frequency of shots taken from the location and the color corresponds to the percent difference in Lebron's field goal attempts versus the league average from the given shot zone area and range.
 
 <p align = 'center'><img src='plots/lebron_gif.gif' alt='Lebron Shot Chart Through the Years' width='80%' height='80%'></p>
+<caption>A shotchart visualization where each hexagon “bin” corresponds to a location where the shot was taken using a combination of X and Y coordinates, shot zone range and shot zone area. The size of the bin corresponds to the frequency of shots taken from the general area whereas the color of the bin represents the player field goal vs. league average.</caption>
 
-The second data visualization is looking at all shots taken thus far in James' career. The teal color corresponds to made shots whereas the orange color corresponds to missed shots. The record-breaking shot is starred in yellow.
+The second shot chart, shown below, shows all attempted career shots categorized by whether they were made or missed, with the record-breaking shot indicated by a yellow star.
 
 <p align = 'center'><img src='plots/lebron_shot_chart.png' alt='Lebron Shot Chart' width='80%' height='80%'></p>
+<caption>A shot chart showing all shots attempted — made and missed, in Lebron’s career so far. The record-breaking shot during the 2/7/2023 game versus OKC is highlighted in yellow.</caption>
 
-These next two charts are looking at career summaries-the first chart looking at the number of points scored broken down by the teams/seasons Lebron has played in as well as the points coming from type of shot (free throws, 2 and 3 point field goals)...
+The next series of visualizations summarize the points scored and efficiency of attempted shots. The waffle chart in the scoring summary below shows when and where most of the points were scored and the latter chart shows a time series of points scored in each season broken down by type of shot (free throw vs two and three point field goals).
 
 <p align = 'center'><img src='plots/lebron_points_summary.png' alt='Lebron Points Summary' width='80%' height='80%'></p>
-
+<caption>A summary of the points made throughout Lebron James’ career: The first chart is a “waffle” type chart where each square shows the share of points per teams played. The greatest number of points were scored with the Cavaliers (which was also the team James’ played in the longest). The chart on the bottom is a time series showing the number of points scored from free throws and 2 and 3 point field goals. The greatest number of points was scored with Cleveland in 2005–06, but more points were coming from 3 point field goals than free throws starting in the 2016–17 season.</caption>
 And this chart here looks at shooting efficiency using the true shooting percentage (TSP) formula. The final plot is looking at field goal vs league percent aggregated by season.
 
-<p align = 'center'><img src='plots/lebron_fg_stats_summary.png' alt='Lebron FG Stats Summary' width='80%' height='80%'></p>
+Most points were scored with the Cavaliers between 2003–2010 — which is expected in part because that was the team Lebron played in the longest. The greatest number of points scored during any season occured in the 2005–06 season with Cleveland, with the greatest share of these points coming from free throws and 3 point field goals subsequent to 2 point field goals. The number of points from 3 point field goals surpassed points from free throws after the 2017–18 season with Cleveland.
 
-<b>Credits:</b> The heavy lifting of this analysis was possible largely thanks to the [ballR](https://github.com/toddwschneider/ballr) tool created by Todd Schneider (you can read more about it [here](https://toddwschneider.com/posts/ballr-interactive-nba-shot-charts-with-r-and-shiny/)) and the [nba-api](https://github.com/swar/nba_api) Python library. 
+The final visualization summarizing Lebron’s career is a look into shooting efficiency, which is a combination of statistics accounting for free throw and field goal percentage. Efficiency is best represented by the true shooting percentage —that accounts for field goals and free throw attempts differently. The free throw percentage and field goal percentage is also included in the chart. The best year, efficiency wise, was in 2013–14 with Miami Heat.
+
+<p align = 'center'><img src='plots/lebron_fg_stats_summary.png' alt='Lebron FG Stats Summary' width='80%' height='80%'></p>
+<caption>A time series showing the true shooting percentage alongside the actual free throw percentage and field goal percentage made every season showing the best season, efficiency wise, was the 2013–14 season with Miami Heat. This was also the best year when comparing field goal percentage over season versus the league average.</caption>
+
+The chart on the bottom is a summary of field goal percent versus league average. While the animated shot chart in the first part of this article showed field goal versus league average differences with greater granularity as it accounted for location — this chart here aggregates the data to show what the difference looked like when looking at the whole season, which also demonstrates 2013–14 being the better season from the perspective of shots made over all attempted for Lebron.
+
+<b>Credits:</b> This summary was largely made possible by the code used to create the [ballR shiny application](https://github.com/toddwschneider/ballr) and the [NBA API library](https://github.com/swar/nba_api) in Python.
 
 
 ## Scripts to Retrieve Data
