@@ -6,6 +6,7 @@ A compilation of data visualizations projects made using the R programming langu
 * [Animated Measles Map](#animated-measles-map)
 * [Artists Occupation and Race Graph](#acs-artists-graph)
 * [Australia Climate Maps and Graphs](#australia-climate-maps)
+* [Basketball Analytics](#basketball-analytics)
 * [Bees Colony Loss Graph](#bees-colony-loss-graph)
 * [Chocolate Bars Bean Origin to Manufacturer Map](#chocolate-bars-bean-origin-to-manufacturer-map)
 * [Google Products Network Graph](#google-products-network-graph)
@@ -38,6 +39,15 @@ Project: [Tidy Tuesday Week 39 2022](https://github.com/rfordatascience/tidytues
 <p align = 'center'><img src='CopyOftemp_ggrid.png' alt='Australia ridgeline plot' width='70%' height='70%'></p>
 
 Project: [Tidy Tuesday Week 2 2020](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-07/readme.md)
+
+## Basketball Analytics
+
+### Lebron James: A Making of NBA History
+
+<p align = 'center'><img src='/Basketball/Lebron/plots/lebron_gif.gif' alt='Lebron Shot Chart Through the Years' width='80%' height='80%'></p>
+<p align = 'center'><img src='/Basketball/Lebron/plots/lebron_shot_chart.png' alt='Lebron Shot Chart' width='80%' height='80%'></p>
+<p align = 'center'><img src='/Basketball/Lebron/plots/lebron_points_summary.png' alt='Lebron Points Summary' width='80%' height='80%'></p>
+<p align = 'center'><img src='/Basketball/Lebron/plots/lebron_fg_stats_summary.png' alt='Lebron FG Stats Summary' width='80%' height='80%'></p>
 
 ## Bees Colony Loss Graph
 ![Bees graph](CopyOfbees_with_cairo.png) 
