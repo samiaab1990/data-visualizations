@@ -62,14 +62,20 @@ mutate(percent = counts/sum(counts),
        ))
 
 
-pal1<-c("#F0E3D0","#FDF0DF","#B3A898")
-pal2<-c("#F6B5D3","#F6CFDD","#C78AAC")
-pal3<-c("#8EC3E3","#C0EEFF","#68818A")
+pal1<-c("#F0E3D0","#FFFFFF","#B3A898")
+pal2<-c("#F6B5D3","#FFFFFF","#C78AAC")
+pal3<-c("#8EC3E3","#FFFFFF","#68818A")
 pal4<-c("#E3E3E3","#FFFFFF","#707070")
-pal5<-c("#C4B1DE","#EAD8FF","#8F849C")
-pal6<-c("#EBE980","#FFFD9C","#8A8854")
+pal5<-c("#C4B1DE","#FFFFFF","#8F849C")
+pal6<-c("#EBE980","#FFFFFF","#8A8854")
 
-
+# color borders
+# pal1<-c("#F0E3D0","#FDF0DF","#B3A898")
+# pal2<-c("#F6B5D3","#F6CFDD","#C78AAC")
+# pal3<-c("#8EC3E3","#C0EEFF","#68818A")
+# pal4<-c("#E3E3E3","#FFFFFF","#707070")
+# pal5<-c("#C4B1DE","#EAD8FF","#8F849C")
+# pal6<-c("#EBE980","#FFFD9C","#8A8854")
 
 make_tablet<-function(time_frame, tablet_color, offset_color, text_color)
 {
@@ -116,7 +122,7 @@ pmap(make_tablet)
 
 main_plot<-ggplot()+
 geom_textbox(aes(x=7.5,y=13, label="Common Therapeutic Classes of Authorized Drugs in Europe Over the Years"), family="Space Mono", size=15, fontface="bold", box.color=NA, fill=NA, width=unit(1,"npc"), lineheight=0, color="#494949")+
-geom_textbox(aes(x=6.7,y=11.8, label="An exploration of <b> 28 years </b> of human drug development trends in Europe. Each chart below shows <b>the percent of authorizations for each therapeutic class</b> over the total authorizations for the <b> 5 most common classes </b> of approved drugs in every 5 year period since 1995."), family="Roboto Condensed", size=6,  box.color=NA, fill=NA, width=unit(.9,"npc"), lineheight=.5, color="#494949")+
+geom_textbox(aes(x=6.7,y=12, label="An exploration of <b> 28 years </b> of human drug development trends in Europe. Each chart below shows <b>the percent of authorizations for each therapeutic class</b> over the total authorizations for the <b> 5 most common classes </b> of approved drugs in every 5 year period since 1995."), family="Roboto Condensed", size=6,  box.color=NA, fill=NA, width=unit(.9,"npc"), lineheight=.5, color="#494949")+
 geom_textbox(aes(x=11.8,y=0, label="<b>Source:</b> European Medicines Agency <b>Viz By:</b> Samia B (<span style='font-family: \"Font Awesome 5 Brands Regular\"'>&#xf09b;</span> samiaab1990)</span>"), family="Space Mono", size=4,  box.color=NA, fill=NA, width=unit(.9,"npc"), lineheight=0, color="#494949")+
 xlim(c(0,15))+
 ylim(c(0,13))+
@@ -133,7 +139,7 @@ draw_plot(tablet_layout, height=.85)
 
 
 
-ggsave(filename = "drug_development_part_to_whole.png", 
+ggsave(filename = "drug_development_part_to_whole2.png", 
        plot=complete_plot, 
        width= 5 * 3, 
        height=13, 
