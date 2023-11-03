@@ -76,6 +76,11 @@ Project: [Tidy Tuesday Week 40 2022](https://github.com/rfordatascience/tidytues
 
 Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-06)
 
+## Patient Risk Profiles
+<img src='CopyOfabx_hearing_loss_risk_viz.png' alt='Antibiotics Hearing Loss Viz' width='100%' height='100%'>
+
+Project: [Tidy Tuesday Week 43 2023](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-10-24/readme.md)
+
 ## OpenStreetMaps 
 <img src='CopyOffull_plot_using_bbox.png' alt='osm' width='100%' height='100%'>
 
