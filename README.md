@@ -12,6 +12,7 @@ A compilation of data visualizations projects made using the R programming langu
 * [Google Products Network Graph](#google-products-network-graph)
 * [Legos Waffle Chart](#legos-waffle-chart)
 * [OpenStreetMaps](#openstreetmaps)
+* [Patient Risk Profiles](#patient-risk-profiles)
 * [Retail Sales](#retail-sales)
 * [SF Bay Area Rents Chart](#sf-bay-area-rents-chart)
 * [Weather Forecast Accuracy](#weather-forecast-accuracy)
