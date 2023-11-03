@@ -83,6 +83,11 @@ Project: [Tidy Tuesday Week 36 2022](https://github.com/rfordatascience/tidytues
 
 <img src='CopyOfmanhattan_neighborhoods.png' alt='osm' width='100%' height='100%'>
 
+## Patient Risk Profiles 
+<img src='CopyOfabx_hearing_loss_viz.png' alt = 'patient-risk-profiles' width='100%' height='100%'>
+
+Project:[Tidy Tuesday Week 43 2023](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-10-24/readme.md)
+
 ## Retail Sales
 <img src='CopyOfretail.png' alt='Retail Sales' width='100%' height='100%'>
 
